@@ -33,7 +33,9 @@ const Registrations = props => {
       },
     },
     { withCredentials: true })
-      .then(response => console.log('registration res', response))
+      .then(response => {
+        if (response.data.status === 'created') props.handleSuccessfulAuth(response.data);
+      })
       .catch(error => console.log('registration error', error));
   };
 
