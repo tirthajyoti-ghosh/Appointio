@@ -3,6 +3,7 @@ import Registrations from './auth/Registrations';
 
 const Home = props => {
   const handleSuccessfulAuth = data => {
+    props.handleLogin(data);
     props.history.push('/dashboard');
   };
 

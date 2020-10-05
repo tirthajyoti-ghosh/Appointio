@@ -11,11 +11,19 @@ const App = () => {
     user: {},
   };
 
-  const [state] = useState(initialState);
+  const [state, setState] = useState(initialState);
+
+  const handleLogin = data => {
+    setState({
+      loggedInStatus: 'LOGGED_IN',
+      user: data.user,
+    });
+  };
+
   return (
     <Router>
       <Switch>
-        <Route exact path="/" render={props => <Home {...props} loggedInStatus={state.loggedInStatus} />} />
+        <Route exact path="/" render={props => <Home {...props} handleLogin={handleLogin} loggedInStatus={state.loggedInStatus} />} />
         <Route exact path="/dashboard" render={props => <Dashboard {...props} loggedInStatus={state.loggedInStatus} />} />
       </Switch>
     </Router>
