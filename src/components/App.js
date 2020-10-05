@@ -44,10 +44,22 @@ const App = () => {
     });
   };
 
+  const handleLogout = () => {
+    axios
+      .delete('http://localhost:3001/logout', { withCredentials: true })
+      .then(() => {
+        setState({
+          loggedInStatus: 'NOT_LOGGED_IN',
+          user: {},
+        });
+      })
+      .catch(error => console.log(error));
+  };
+
   return (
     <Router>
       <Switch>
-        <Route exact path="/" render={props => <Home {...props} handleLogin={handleLogin} loggedInStatus={state.loggedInStatus} />} />
+        <Route exact path="/" render={props => <Home {...props} handleLogin={handleLogin} handleLogout={handleLogout} loggedInStatus={state.loggedInStatus} />} />
         <Route exact path="/dashboard" render={props => <Dashboard {...props} loggedInStatus={state.loggedInStatus} />} />
       </Switch>
     </Router>

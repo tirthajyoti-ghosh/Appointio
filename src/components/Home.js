@@ -15,6 +15,7 @@ const Home = props => {
         Status:
         {props.loggedInStatus}
       </h2>
+      <button type="button" onClick={props.handleLogout}>Logout</button>
       <Registrations handleSuccessfulAuth={handleSuccessfulAuth} />
       <Login handleSuccessfulAuth={handleSuccessfulAuth} />
     </div>
