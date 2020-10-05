@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const Registrations = props => {
   const initialState = {
@@ -19,8 +20,21 @@ const Registrations = props => {
   };
 
   const handleSubmit = event => {
-    console.log('form submitted');
     event.preventDefault();
+
+    const {
+      // eslint-disable-next-line camelcase
+      name, email, password, password_confirmation,
+    } = user;
+
+    axios.post('http://localhost:3001/registrations', {
+      user: {
+        name, email, password, password_confirmation,
+      },
+    },
+    { withCredentials: true })
+      .then(response => console.log('registration res', response))
+      .catch(error => console.log('registration error', error));
   };
 
   return (
@@ -29,7 +43,7 @@ const Registrations = props => {
         <input type="text" placeholder="Name" name="name" onChange={handleChange} value={user.name} required />
         <input type="email" placeholder="Email" name="email" onChange={handleChange} value={user.email} required />
         <input type="password" placeholder="Password" name="password" onChange={handleChange} value={user.password} required />
-        <input type="password" placeholder="Password Confimation" name="password_confimation" onChange={handleChange} value={user.password_confirmation} required />
+        <input type="password" placeholder="Password Confimation" name="password_confirmation" onChange={handleChange} value={user.password_confirmation} required />
 
         <button type="submit">Register</button>
       </form>
