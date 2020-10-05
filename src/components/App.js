@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import axios from 'axios';
 
 import Home from './Home';
 import Dashboard from './Dashboard';
@@ -12,6 +13,29 @@ const App = () => {
   };
 
   const [state, setState] = useState(initialState);
+
+  const checkLoggedInStatus = () => {
+    axios
+      .get('http://localhost:3001/logged_in', { withCredentials: true })
+      .then(response => {
+        if (response.data.logged_in && state.loggedInStatus === 'NOT_LOGGED_IN') {
+          setState({
+            loggedInStatus: 'LOGGED_IN',
+            user: response.data.user,
+          });
+        } else if (!response.data.logged_in && state.loggedInStatus === 'LOGGED_IN') {
+          setState({
+            loggedInStatus: 'NOT_LOGGED_IN',
+            user: {},
+          });
+        }
+      })
+      .catch(error => console.log(error));
+  };
+
+  useEffect(() => {
+    checkLoggedInStatus();
+  });
 
   const handleLogin = data => {
     setState({
