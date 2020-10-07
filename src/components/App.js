@@ -7,6 +7,7 @@ import Home from './Home';
 import Dashboard from './Dashboard';
 import Appointments from './Appointments';
 import Types from './Types';
+import Apartments from './Apartments';
 
 const App = () => {
   const initialState = {
@@ -63,9 +64,9 @@ const App = () => {
       <Switch>
         <Route exact path="/" render={props => <Home {...props} handleLogin={handleLogin} handleLogout={handleLogout} loggedInStatus={state.loggedInStatus} />} />
         <Route exact path="/dashboard" render={props => <Dashboard {...props} loggedInStatus={state.loggedInStatus} />} />
-        <Route exact path="/dashboard" render={props => <Dashboard {...props} loggedInStatus={state.loggedInStatus} />} />
         <Route exact path="/appointments" render={props => <Appointments {...props} user={state.user} />} />
         <Route exact path="/types" render={props => <Types {...props} user={state.user} />} />
+        <Route exact path="/apartments" render={props => <Apartments {...props} user={state.user} />} />
       </Switch>
     </Router>
   );
