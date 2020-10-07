@@ -5,6 +5,7 @@ import axios from 'axios';
 
 import Home from './Home';
 import Dashboard from './Dashboard';
+import Appointments from './Appointments';
 
 const App = () => {
   const initialState = {
@@ -35,7 +36,7 @@ const App = () => {
 
   useEffect(() => {
     checkLoggedInStatus();
-  });
+  }, []);
 
   const handleLogin = data => {
     setState({
@@ -61,6 +62,8 @@ const App = () => {
       <Switch>
         <Route exact path="/" render={props => <Home {...props} handleLogin={handleLogin} handleLogout={handleLogout} loggedInStatus={state.loggedInStatus} />} />
         <Route exact path="/dashboard" render={props => <Dashboard {...props} loggedInStatus={state.loggedInStatus} />} />
+        <Route exact path="/dashboard" render={props => <Dashboard {...props} loggedInStatus={state.loggedInStatus} />} />
+        <Route exact path="/appointments" render={props => <Appointments {...props} user={state.user} />} />
       </Switch>
     </Router>
   );
