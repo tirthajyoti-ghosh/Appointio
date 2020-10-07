@@ -8,6 +8,7 @@ import Dashboard from './Dashboard';
 import Appointments from './Appointments';
 import Types from './Types';
 import Apartments from './Apartments';
+import ApartmentDetails from './ApartmentDetails';
 
 const App = () => {
   const initialState = {
@@ -67,6 +68,7 @@ const App = () => {
         <Route exact path="/appointments" render={props => <Appointments {...props} user={state.user} />} />
         <Route exact path="/types" render={props => <Types {...props} user={state.user} />} />
         <Route exact path="/apartments" render={props => <Apartments {...props} user={state.user} />} />
+        <Route exact path="/apartment/:apartmentId" render={props => <ApartmentDetails {...props} user={state.user} />} />
       </Switch>
     </Router>
   );
