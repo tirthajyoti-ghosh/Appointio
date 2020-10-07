@@ -4,11 +4,11 @@ import axios from 'axios';
 const Apartments = props => {
   const [apartments, setApartments] = useState([]);
 
-  const getAllTypes = () => axios
+  const getAllApartments = () => axios
     .get('http://localhost:3001/apartments', { withCredentials: true }).then(response => (response.data.apartments));
 
   useEffect(() => {
-    getAllTypes().then(apartments => setApartments(apartments));
+    getAllApartments().then(apartments => setApartments(apartments));
   }, []);
 
   return (

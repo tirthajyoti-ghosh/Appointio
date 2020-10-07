@@ -9,6 +9,7 @@ import Appointments from './Appointments';
 import Types from './Types';
 import Apartments from './Apartments';
 import ApartmentDetails from './ApartmentDetails';
+import ApartmentsByType from './ApartmentsByType';
 
 const App = () => {
   const initialState = {
@@ -67,6 +68,7 @@ const App = () => {
         <Route exact path="/dashboard" render={props => <Dashboard {...props} loggedInStatus={state.loggedInStatus} />} />
         <Route exact path="/appointments" render={props => <Appointments {...props} user={state.user} />} />
         <Route exact path="/types" render={props => <Types {...props} user={state.user} />} />
+        <Route exact path="/types/:typeId/:typeName" render={props => <ApartmentsByType {...props} user={state.user} />} />
         <Route exact path="/apartments" render={props => <Apartments {...props} user={state.user} />} />
         <Route exact path="/apartment/:apartmentId" render={props => <ApartmentDetails {...props} user={state.user} />} />
       </Switch>
