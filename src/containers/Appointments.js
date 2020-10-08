@@ -1,21 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 
-const Appointments = props => {
-  const [appointments, setAppointments] = useState([]);
+import getAllAppointments from '../API/getAllAppointments';
+import { ADD_APPOINTMENTS } from '../constants';
 
-  const getAllAppointments = () => axios
-    .get('http://localhost:3001/appointments', { withCredentials: true }).then(response => (response.data.appointments));
-
+const Appointments = ({ appointments, appointmentsAdder, user }) => {
   useEffect(() => {
-    getAllAppointments().then(appointments => setAppointments(appointments));
+    getAllAppointments().then(appointments => appointmentsAdder(appointments));
   }, []);
 
   return (
     <div>
       <h1>Appointments</h1>
       <h2>
-        Name: { props.user.name }
+        Name: { user.name }
       </h2>
 
       <ul>
@@ -29,4 +27,15 @@ const Appointments = props => {
   );
 };
 
-export default Appointments;
+const mapStateToProps = state => ({
+  appointments: state.appointments,
+});
+
+const mapDispatchToProps = dispatch => ({
+  appointmentsAdder: appointments => dispatch({ type: ADD_APPOINTMENTS, appointments }),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Appointments);
