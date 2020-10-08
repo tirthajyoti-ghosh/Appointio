@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 
-const ApartmentsByType = ({ match, user }) => {
+import getAllApartmentsByType from '../API/getAllApartmentsByType';
+import { ADD_APARTMENTS_BY_TYPE } from '../constants';
+
+const ApartmentsByType = ({
+  apartmentsByType, apartmentsByTypeAdder, match, user,
+}) => {
   const { name } = user;
   const { typeId, typeName } = match.params;
 
-  const [apartments, setApartments] = useState([]);
-
-  const getAllApartmentsByType = () => axios
-    .get(`http://localhost:3001/types/${typeId}`, { withCredentials: true }).then(response => (response.data.apartments));
-
   useEffect(() => {
-    getAllApartmentsByType().then(apartments => setApartments(apartments));
+    getAllApartmentsByType(typeId)
+      .then(apartments => apartmentsByTypeAdder(apartments));
   }, []);
 
   return (
@@ -29,8 +30,21 @@ const ApartmentsByType = ({ match, user }) => {
 
       <ul>
         {
-          apartments.map(apartment => (
-            <li key={apartment.id}>{apartment.address}</li>
+          apartmentsByType.map(apartment => (
+            <li key={apartment.id}>
+              <p>{apartment.address}</p>
+              <p>
+                Rent:
+                {' '}
+                {apartment.rent}
+              </p>
+              <p>
+                Reviews:
+                {' '}
+                {apartment.reviews}
+              </p>
+              <p><img src={apartment.images[0].url} alt="" /></p>
+            </li>
           ))
         }
       </ul>
@@ -38,4 +52,16 @@ const ApartmentsByType = ({ match, user }) => {
   );
 };
 
-export default ApartmentsByType;
+const mapStateToProps = state => ({
+  apartmentsByType: state.apartmentsByType,
+});
+
+const mapDispatchToProps = dispatch => ({
+  apartmentsByTypeAdder:
+    apartmentsByType => dispatch({ type: ADD_APARTMENTS_BY_TYPE, apartmentsByType }),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(ApartmentsByType);
