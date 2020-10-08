@@ -5,11 +5,11 @@ import axios from 'axios';
 
 import Home from './Home';
 import Dashboard from './Dashboard';
-import Appointments from './Appointments';
+import Appointments from '../containers/Appointments';
 import Types from './Types';
-import Apartments from './Apartments';
-import ApartmentDetails from './ApartmentDetails';
-import ApartmentsByType from './ApartmentsByType';
+import Apartments from '../containers/Apartments';
+import ApartmentDetails from '../containers/ApartmentDetails';
+import ApartmentsByType from '../containers/ApartmentsByType';
 
 const App = () => {
   const initialState = {
