@@ -56,15 +56,18 @@ const mapDispatchToProps = dispatch => ({
 
 Apartments.propTypes = {
   apartmentsAdder: PropTypes.func.isRequired,
+
   apartments: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     address: PropTypes.string.isRequired,
     rent: PropTypes.string.isRequired,
     reviews: PropTypes.number.isRequired,
+
     images: PropTypes.arrayOf(PropTypes.shape({
       url: PropTypes.string.isRequired,
     })).isRequired,
   }).isRequired).isRequired,
+
   user: PropTypes.shape({
     name: PropTypes.string.isRequired,
   }).isRequired,
