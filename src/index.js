@@ -12,8 +12,9 @@ import reducer from './store/reducers/index';
 
 const initialState = {
   apartments: [],
-  apartmentsByType: [],
   apartmentDetails: {},
+  apartmentsByType: [],
+  types: [],
   appointments: [],
   loggedInStatus: 'NOT_LOGGED_IN',
   user: {},
