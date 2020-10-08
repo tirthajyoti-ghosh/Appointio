@@ -70,7 +70,7 @@ const App = () => {
         <Route exact path="/types" render={props => <Types {...props} user={state.user} />} />
         <Route exact path="/types/:typeId/:typeName" render={props => <ApartmentsByType {...props} user={state.user} />} />
         <Route exact path="/apartments" render={props => <Apartments {...props} user={state.user} />} />
-        <Route exact path="/apartment/:apartmentId" render={props => <ApartmentDetails {...props} user={state.user} />} />
+        <Route exact path="/apartments/:apartmentId" render={props => <ApartmentDetails {...props} user={state.user} />} />
       </Switch>
     </Router>
   );

@@ -1,23 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 
-const ApartmentDetails = ({ match, user }) => {
+import getApartmentDetails from '../API/getApartmentDetails';
+import { ADD_APARTMENT_DETAILS } from '../constants';
+
+const ApartmentDetails = ({
+  apartmentDetails, apartmentDetailsAdder, match, user,
+}) => {
   const { name } = user;
   const { apartmentId } = match.params;
 
-  const [apartment, setApartment] = useState({});
-
-  const getApartmentDetails = () => axios
-    .get(`http://localhost:3001/apartments/${apartmentId}`, { withCredentials: true }).then(response => (response.data));
-
   useEffect(() => {
-    getApartmentDetails().then(apartment => setApartment(apartment));
-  }, []);
+    getApartmentDetails(apartmentId)
+      .then(apartmentDetails => apartmentDetailsAdder(apartmentDetails));
+  }, [apartmentDetails.id]);
+
+  const {
+    id, address, rent, reviews, amenities, deposit, sq_ft: squareFeet, lease_length: leaseLength, images, type,
+  } = apartmentDetails;
 
   return (
     <>
       {
-        apartment.id !== parseInt(apartmentId, 10) ? 'Loading...' : (
+        id !== parseInt(apartmentId, 10) ? 'Loading...' : (
           <div>
             <h1>ApartmentDetails</h1>
             <h2>
@@ -26,23 +31,23 @@ const ApartmentDetails = ({ match, user }) => {
               { name }
             </h2>
 
-            <p>{apartment.address}</p>
-            <p>{apartment.rent}</p>
-            <p>{apartment.reviews}</p>
-            <p>{apartment.amenities}</p>
-            <p>{apartment.deposit}</p>
-            <p>{apartment.sq_ft}</p>
-            <p>{apartment.lease_length}</p>
+            <p>{address}</p>
+            <p>{rent}</p>
+            <p>{reviews}</p>
+            <p>{amenities}</p>
+            <p>{deposit}</p>
+            <p>{squareFeet}</p>
+            <p>{leaseLength}</p>
             <p>
               {
-                apartment.images === undefined ? 'Loading...' : (
-                  apartment.images.map(image => (
+                images === undefined ? 'Loading...' : (
+                  images.map(image => (
                     <img key={image.id} src={image.url} alt="" />
                   ))
                 )
               }
             </p>
-            <p>{apartment.type}</p>
+            <p>{type}</p>
           </div>
         )
       }
@@ -50,4 +55,15 @@ const ApartmentDetails = ({ match, user }) => {
   );
 };
 
-export default ApartmentDetails;
+const mapStateToProps = state => ({
+  apartmentDetails: state.apartmentDetails,
+});
+
+const mapDispatchToProps = dispatch => ({
+  apartmentDetailsAdder: apartmentDetails => dispatch({ type: ADD_APARTMENT_DETAILS, apartmentDetails }),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(ApartmentDetails);
