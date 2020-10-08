@@ -6,7 +6,7 @@ import axios from 'axios';
 import Home from './Home';
 import Dashboard from './Dashboard';
 import Appointments from '../containers/Appointments';
-import Types from './Types';
+import Types from '../containers/Types';
 import Apartments from '../containers/Apartments';
 import ApartmentDetails from '../containers/ApartmentDetails';
 import ApartmentsByType from '../containers/ApartmentsByType';
