@@ -30,7 +30,7 @@ const ApartmentDetails = ({
   useEffect(() => {
     getApartmentDetails(apartmentId)
       .then(apartmentDetails => apartmentDetailsAdder(apartmentDetails));
-  }, [id]);
+  }, []);
 
   return (
     <>

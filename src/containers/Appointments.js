@@ -3,8 +3,11 @@ import { connect } from 'react-redux';
 
 import getAllAppointments from '../API/getAllAppointments';
 import { ADD_APPOINTMENTS } from '../constants';
+import DeleteAppointment from './DeleteAppointment';
 
 const Appointments = ({ appointments, appointmentsAdder, user }) => {
+  const { name } = user;
+
   useEffect(() => {
     getAllAppointments().then(appointments => appointmentsAdder(appointments));
   }, []);
@@ -13,13 +16,21 @@ const Appointments = ({ appointments, appointmentsAdder, user }) => {
     <div>
       <h1>Appointments</h1>
       <h2>
-        Name: { user.name }
+        Name:
+        {' '}
+        { name }
       </h2>
 
       <ul>
         {
           appointments.map(appointment => (
-            <li key={appointment.id}>{appointment.date}</li>
+            <li key={appointment.id}>
+              {appointment.date}
+              {' '}
+              |
+              {' '}
+              <DeleteAppointment appointmentId={appointment.id} />
+            </li>
           ))
         }
       </ul>
