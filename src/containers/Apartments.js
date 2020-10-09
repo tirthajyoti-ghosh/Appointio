@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-
 import PropTypes from 'prop-types';
 
 import getAllApartments from '../API/getAllApartments';
@@ -58,18 +57,18 @@ Apartments.propTypes = {
   apartmentsAdder: PropTypes.func.isRequired,
 
   apartments: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    address: PropTypes.string.isRequired,
-    rent: PropTypes.string.isRequired,
-    reviews: PropTypes.number.isRequired,
+    id: PropTypes.number,
+    address: PropTypes.string,
+    rent: PropTypes.string,
+    reviews: PropTypes.number,
 
     images: PropTypes.arrayOf(PropTypes.shape({
-      url: PropTypes.string.isRequired,
-    })).isRequired,
-  }).isRequired).isRequired,
+      url: PropTypes.string,
+    })),
+  })).isRequired,
 
   user: PropTypes.shape({
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
   }).isRequired,
 };
 
