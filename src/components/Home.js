@@ -1,12 +1,8 @@
 import React from 'react';
-import Login from './auth/Login';
-import Registrations from './auth/Registrations';
+import Login from '../containers/auth/Login';
+import Registrations from '../containers/auth/Registrations';
 
 const Home = props => {
-  const handleSuccessfulAuth = data => {
-    props.handleLogin(data);
-    props.history.push('/dashboard');
-  };
 
   return (
     <div>

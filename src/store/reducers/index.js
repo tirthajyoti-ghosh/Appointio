@@ -5,6 +5,7 @@ import apartmentsByType from './apartmentsByType';
 import apartmentDetails from './apartmentDetails';
 import types from './types';
 import appointments from './appointments';
+import user from './user';
 
 export default combineReducers({
   apartments,
@@ -12,4 +13,5 @@ export default combineReducers({
   types,
   apartmentDetails,
   appointments,
+  user,
 });

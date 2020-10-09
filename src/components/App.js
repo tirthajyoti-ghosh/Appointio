@@ -3,13 +3,13 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import axios from 'axios';
 
-import Home from './Home';
-import Dashboard from './Dashboard';
 import Appointments from '../containers/Appointments';
 import Types from '../containers/Types';
 import Apartments from '../containers/Apartments';
 import ApartmentDetails from '../containers/ApartmentDetails';
 import ApartmentsByType from '../containers/ApartmentsByType';
+import Login from '../containers/auth/Login';
+import Registrations from '../containers/auth/Registrations';
 
 const App = () => {
   const initialState = {
@@ -42,13 +42,6 @@ const App = () => {
     checkLoggedInStatus();
   }, []);
 
-  const handleLogin = data => {
-    setState({
-      loggedInStatus: 'LOGGED_IN',
-      user: data.user,
-    });
-  };
-
   const handleLogout = () => {
     axios
       .delete('http://localhost:3001/logout', { withCredentials: true })
@@ -64,13 +57,13 @@ const App = () => {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" render={props => <Home {...props} handleLogin={handleLogin} handleLogout={handleLogout} loggedInStatus={state.loggedInStatus} />} />
-        <Route exact path="/dashboard" render={props => <Dashboard {...props} loggedInStatus={state.loggedInStatus} />} />
         <Route exact path="/appointments" render={props => <Appointments {...props} user={state.user} />} />
         <Route exact path="/types" render={props => <Types {...props} user={state.user} />} />
         <Route exact path="/types/:typeId/:typeName" render={props => <ApartmentsByType {...props} user={state.user} />} />
-        <Route exact path="/apartments" render={props => <Apartments {...props} user={state.user} />} />
+        <Route exact path="/" render={props => <Apartments {...props} user={state.user} />} />
         <Route exact path="/apartments/:apartmentId" render={props => <ApartmentDetails {...props} user={state.user} />} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/register" component={Registrations} />
       </Switch>
     </Router>
   );

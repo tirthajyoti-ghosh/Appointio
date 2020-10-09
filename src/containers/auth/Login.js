@@ -1,14 +1,34 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-const Login = props => {
+import login from '../../API/login';
+import { STORE_USER } from '../../constants';
+
+const Login = ({ storeUser }) => {
   const initialState = {
     email: '',
     password: '',
     errors: '',
+    loading: false,
   };
 
   const [user, setUser] = useState(initialState);
+
+  const {
+    email, password, loading, errors,
+  } = user;
+
+  const history = useHistory();
+
+  const redirectBack = () => {
+    history.goBack();
+  };
+
+  const handleSuccessfulAuth = data => {
+    storeUser(data);
+    redirectBack();
+  };
 
   const handleChange = event => {
     setUser({
@@ -19,33 +39,34 @@ const Login = props => {
 
   const handleSubmit = event => {
     event.preventDefault();
+    setUser({
+      ...user,
+      loading: true,
+    });
 
-    const {
-      email, password,
-    } = user;
-
-    axios.post('http://localhost:3001/login', {
-      user: {
-        email, password,
-      },
-    },
-    { withCredentials: true })
+    login(email, password)
       .then(response => {
-        if (response.data.logged_in === true) props.handleSuccessfulAuth(response.data);
+        if (response.data.logged_in === true) handleSuccessfulAuth(response.data);
       })
-      .catch(error => console.log('registration error', error));
+      .catch(() => setUser({ ...user, errors: 'Invalid email/password. Try again.' }));
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input type="email" placeholder="Email" name="email" onChange={handleChange} value={user.email} required />
-        <input type="password" placeholder="Password" name="password" onChange={handleChange} value={user.password} required />
+    <form onSubmit={handleSubmit}>
+      <input type="email" placeholder="Email" name="email" onChange={handleChange} value={user.email} required />
+      <input type="password" placeholder="Password" name="password" onChange={handleChange} value={user.password} required />
 
-        <button type="submit">Login</button>
-      </form>
-    </div>
+      <button type="submit">{ loading ? 'Submitting...' : 'Login' }</button>
+      { errors !== '' ? <p>{errors}</p> : '' }
+    </form>
   );
 };
 
-export default Login;
+const mapDispatchToProps = dispatch => ({
+  storeUser: user => dispatch({ type: STORE_USER, user }),
+});
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(Login);
