@@ -11,7 +11,7 @@ const createAppointment = (date, apartmentId) => (
     withCredentials: true,
   })
     .then(response => response.data.message)
-    .catch(error => error.data.message)
+    .catch(() => 'Request failed. Try again.')
 );
 
 export default createAppointment;
