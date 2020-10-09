@@ -6,6 +6,8 @@ import PropTypes from 'prop-types';
 import getApartmentDetails from '../API/getApartmentDetails';
 import { ADD_APARTMENT_DETAILS } from '../constants';
 
+import MakeAppointment from './MakeAppointment';
+
 const ApartmentDetails = ({
   apartmentDetails, apartmentDetailsAdder, match, user,
 }) => {
@@ -59,6 +61,9 @@ const ApartmentDetails = ({
               }
             </p>
             <p>{type}</p>
+
+            <MakeAppointment apartmentId={apartmentId} />
+
           </div>
         )
       }
@@ -79,23 +84,23 @@ ApartmentDetails.propTypes = {
   apartmentDetailsAdder: PropTypes.func.isRequired,
 
   apartmentDetails: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    address: PropTypes.string.isRequired,
-    rent: PropTypes.string.isRequired,
-    amenities: PropTypes.string.isRequired,
-    deposit: PropTypes.string.isRequired,
-    sq_ft: PropTypes.string.isRequired,
-    lease_length: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-    reviews: PropTypes.number.isRequired,
+    id: PropTypes.number,
+    address: PropTypes.string,
+    rent: PropTypes.string,
+    amenities: PropTypes.string,
+    deposit: PropTypes.string,
+    sq_ft: PropTypes.string,
+    lease_length: PropTypes.string,
+    type: PropTypes.string,
+    reviews: PropTypes.number,
 
     images: PropTypes.arrayOf(PropTypes.shape({
-      url: PropTypes.string.isRequired,
-    })).isRequired,
-  }).isRequired.isRequired,
+      url: PropTypes.string,
+    })),
+  }).isRequired,
 
   user: PropTypes.shape({
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
   }).isRequired,
 
   match: PropTypes.shape({
