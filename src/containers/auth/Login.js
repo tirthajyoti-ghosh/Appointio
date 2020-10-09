@@ -40,6 +40,7 @@ const Login = ({ storeUser, updateLoginStatus }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
+
     setUser({
       ...user,
       loading: true,
@@ -49,7 +50,7 @@ const Login = ({ storeUser, updateLoginStatus }) => {
       .then(response => {
         if (response.data.logged_in === true) handleSuccessfulAuth(response.data);
       })
-      .catch(() => setUser({ ...user, errors: 'Invalid email/password. Try again.' }));
+      .catch(() => setUser({ ...user, errors: 'Invalid email/password. Try again.', loading: false }));
   };
 
   return (

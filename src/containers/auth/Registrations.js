@@ -1,16 +1,38 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-const Registrations = props => {
+import register from '../../API/register';
+import { STORE_USER, UPDATE_LOGIN_STATUS } from '../../constants';
+
+const Registrations = ({ storeUser, updateLoginStatus }) => {
   const initialState = {
     name: '',
     email: '',
     password: '',
     password_confirmation: '',
-    errors: '',
+    errors: [],
+    loading: false,
   };
 
   const [user, setUser] = useState(initialState);
+
+  const {
+    // eslint-disable-next-line camelcase
+    name, email, password, password_confirmation, errors, loading,
+  } = user;
+
+  const history = useHistory();
+
+  const redirectBack = () => {
+    history.goBack();
+  };
+
+  const handleSuccessfulAuth = data => {
+    storeUser(data);
+    updateLoginStatus('LOGGED_IN');
+    redirectBack();
+  };
 
   const handleChange = event => {
     setUser({
@@ -22,21 +44,16 @@ const Registrations = props => {
   const handleSubmit = event => {
     event.preventDefault();
 
-    const {
-      // eslint-disable-next-line camelcase
-      name, email, password, password_confirmation,
-    } = user;
+    setUser({
+      ...user,
+      loading: true,
+    });
 
-    axios.post('http://localhost:3001/registrations', {
-      user: {
-        name, email, password, password_confirmation,
-      },
-    },
-    { withCredentials: true })
+    register(name, email, password, password_confirmation)
       .then(response => {
-        if (response.data.status === 'created') props.handleSuccessfulAuth(response.data);
-      })
-      .catch(error => console.log('registration error', error));
+        if (response.data.status === 'created') handleSuccessfulAuth(response.data);
+        else setUser({ ...user, errors: response.data.errors, loading: false });
+      });
   };
 
   return (
@@ -47,10 +64,19 @@ const Registrations = props => {
         <input type="password" placeholder="Password" name="password" onChange={handleChange} value={user.password} required />
         <input type="password" placeholder="Password Confimation" name="password_confirmation" onChange={handleChange} value={user.password_confirmation} required />
 
-        <button type="submit">Register</button>
+        <button type="submit">{ loading ? 'Submitting...' : 'Register' }</button>
+        { errors.length === 0 ? '' : errors.map(error => <p key={error}>{error}</p>) }
       </form>
     </div>
   );
 };
 
-export default Registrations;
+const mapDispatchToProps = dispatch => ({
+  storeUser: user => dispatch({ type: STORE_USER, user }),
+  updateLoginStatus: status => dispatch({ type: UPDATE_LOGIN_STATUS, status }),
+});
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(Registrations);
