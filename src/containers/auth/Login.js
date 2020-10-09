@@ -3,9 +3,9 @@ import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import login from '../../API/login';
-import { STORE_USER } from '../../constants';
+import { STORE_USER, UPDATE_LOGIN_STATUS } from '../../constants';
 
-const Login = ({ storeUser }) => {
+const Login = ({ storeUser, updateLoginStatus }) => {
   const initialState = {
     email: '',
     password: '',
@@ -27,6 +27,7 @@ const Login = ({ storeUser }) => {
 
   const handleSuccessfulAuth = data => {
     storeUser(data);
+    updateLoginStatus('LOGGED_IN');
     redirectBack();
   };
 
@@ -64,6 +65,7 @@ const Login = ({ storeUser }) => {
 
 const mapDispatchToProps = dispatch => ({
   storeUser: user => dispatch({ type: STORE_USER, user }),
+  updateLoginStatus: status => dispatch({ type: UPDATE_LOGIN_STATUS, status }),
 });
 
 export default connect(
