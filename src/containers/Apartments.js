@@ -11,29 +11,41 @@ const Apartments = ({ apartments, apartmentsAdder }) => {
   }, []);
 
   return (
-    <div>
-      <h1>Apartments</h1>
+    <div className="apartments-list">
+      {
+        apartments.map(apartment => (
+          <div className="apartment" key={apartment.id}>
+            <a href={`/apartments/${apartment.id}`} className="link"> </a>
 
-      <ul>
-        {
-          apartments.map(apartment => (
-            <li key={apartment.id}>
-              <p>{apartment.address}</p>
-              <p>
-                Rent:
+            <img src={apartment.images[0].url} alt="" />
+
+            <h3>{apartment.address}</h3>
+            <hr />
+
+            <h4 className="type">{apartment.type}</h4>
+
+            <div className="stats">
+
+              <h4>
+                $
                 {' '}
                 {apartment.rent}
-              </p>
-              <p>
-                Reviews:
-                {' '}
+                <p className="side-text"> /month</p>
+              </h4>
+
+              <h4>
                 {apartment.reviews}
-              </p>
-              <p><img src={apartment.images[0].url} alt="" /></p>
-            </li>
-          ))
-        }
-      </ul>
+                <p className="side-text"> rating</p>
+              </h4>
+
+              <h4>
+                {apartment.sq_ft}
+                <p className="side-text"> sq.ft.</p>
+              </h4>
+            </div>
+          </div>
+        ))
+      }
     </div>
   );
 };
@@ -54,6 +66,7 @@ Apartments.propTypes = {
     address: PropTypes.string,
     rent: PropTypes.string,
     reviews: PropTypes.number,
+    sq_ft: PropTypes.string,
 
     images: PropTypes.arrayOf(PropTypes.shape({
       url: PropTypes.string,

@@ -5,10 +5,10 @@
   
 #root
   main
-    margin-left: 210px  
+    margin-left: 195px
   
   .sidenav
-    width: 210px
+    width: 195px
     height: 100%
     position: fixed
     z-index: 1000
@@ -18,7 +18,7 @@
     border-right: 2px solid #e9e9e9
 
     a
-      padding: 20px 10px 20px 30px
+      padding: 20px
       text-decoration: none
       font-size: 16px
       letter-spacing: 2px
@@ -29,7 +29,7 @@
       display: block
 
       &:hover        
-        background-color: #97BF0F
+        background-color: rgb(151, 191, 15)
         color: #fff
 
     .logo
@@ -102,4 +102,64 @@
         border: none
         background-color: transparent
 
+  .type-name
+    text-align: center
+    margin-top: 50px
+
+    span
+      text-transform: capitalize
+
+  .apartments-list
+    padding: 50px 20px
+    @include flex($justify-content: unset, $align-items: unset)
+    flex-wrap: wrap
+
+    .apartment
+      width: 45%
+      padding: 10px
+      margin: 10px
+      box-shadow: 0 1px 4px 0 rgba(151,191,15,.2)
+      border-radius: 5px
+      position: relative
+      text-align: center
+
+      .link
+        position: absolute
+        left: 0
+        right: 0
+        top: 0
+        bottom: 0
+
+      img
+        width: 100%
+        height: 170px
+        object-fit: cover
+
+      h3
+        font-size: 16px
+        letter-spacing: 1px
+        margin: 20px 0
+      
+      hr
+        width: 70%
+        display: block
+        margin: 0 auto
+        margin-bottom: 30px
+
+      .type
+        text-transform: capitalize
+        margin-bottom: 30px
+
+      .stats
+        @include flex($justify-content: space-between, $align-items: center)        
+        margin-bottom: 30px
+        padding: 0 20px
+        font-weight: normal
+        font-size: 15px
+
+        .side-text
+          font-size: 13px
+          opacity: 0.6
+
+      
 

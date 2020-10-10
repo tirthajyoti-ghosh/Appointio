@@ -11,7 +11,10 @@ const Types = ({ types, typesAdder }) => {
 
   return (
     <div className="types-list">
+      <a href="/">ALL</a>
+
       {
+
         types.map(type => (
           <a href={`/types/${type.id}/${type.name}`} key={type.id}>{type.name}</a>
         ))

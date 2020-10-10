@@ -17,34 +17,49 @@ const ApartmentsByType = ({
   }, []);
 
   return (
-    <div>
-      <h1>
-        {typeName}
+    <>
+      <h1 className="type-name">
+        <span>{typeName}</span>
         {' '}
         apartments
       </h1>
-
-      <ul>
+      <div className="apartments-list">
         {
           apartmentsByType.map(apartment => (
-            <li key={apartment.id}>
-              <p>{apartment.address}</p>
-              <p>
-                Rent:
-                {' '}
-                {apartment.rent}
-              </p>
-              <p>
-                Reviews:
-                {' '}
-                {apartment.reviews}
-              </p>
-              <p><img src={apartment.images[0].url} alt="" /></p>
-            </li>
+            <div className="apartment" key={apartment.id}>
+              <a href={`/apartments/${apartment.id}`} className="link"> </a>
+
+              <img src={apartment.images[0].url} alt="" />
+
+              <h3>{apartment.address}</h3>
+              <hr />
+
+              <h4 className="type">{apartment.type}</h4>
+
+              <div className="stats">
+
+                <h4>
+                  $
+                  {' '}
+                  {apartment.rent}
+                  <p className="side-text"> /month</p>
+                </h4>
+
+                <h4>
+                  {apartment.reviews}
+                  <p className="side-text"> rating</p>
+                </h4>
+
+                <h4>
+                  {apartment.sq_ft}
+                  <p className="side-text"> sq.ft.</p>
+                </h4>
+              </div>
+            </div>
           ))
         }
-      </ul>
-    </div>
+      </div>
+    </>
   );
 };
 
@@ -65,12 +80,13 @@ ApartmentsByType.propTypes = {
     address: PropTypes.string.isRequired,
     rent: PropTypes.string.isRequired,
     reviews: PropTypes.number.isRequired,
+    sq_ft: PropTypes.string.isRequired,
 
     images: PropTypes.arrayOf(PropTypes.shape({
       url: PropTypes.string.isRequired,
     })).isRequired,
   }).isRequired).isRequired,
-  
+
   match: PropTypes.shape({
     params: PropTypes.shape({
       typeId: PropTypes.string.isRequired,
