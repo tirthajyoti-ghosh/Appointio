@@ -10,16 +10,12 @@ const Types = ({ types, typesAdder }) => {
   }, []);
 
   return (
-    <div>
-      <h1>Types</h1>
-
-      <ul>
-        {
-          types.map(type => (
-            <li key={type.id}>{type.name}</li>
-          ))
-        }
-      </ul>
+    <div className="types-list">
+      {
+        types.map(type => (
+          <a href={`/types/${type.id}/${type.name}`} key={type.id}>{type.name}</a>
+        ))
+      }
     </div>
   );
 };

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { STORE_USER, UPDATE_LOGIN_STATUS, REMOVE_USER } from '../constants';
 import checkLoggedInStatus from '../API/checkLoggedInStatus';
+import Logout from './Logout';
 
 const Profile = ({
   user, loggedInStatus, storeUser, removeUser, updateLoginStatus,
@@ -26,10 +27,15 @@ const Profile = ({
         Object.keys(user).length === 0
           ? <a href="/login">Login</a>
           : (
-            <>
-              <h4>{user.name}</h4>
-              <h4>{user.email}</h4>
-            </>
+            <div className="profile">
+              <div className="avatar">{user.name.split('')[0]}</div>
+              <div>
+                <p className="name">{user.name}</p>
+                <p className="email">{user.email}</p>
+              </div>
+
+              <Logout />
+            </div>
           )
       }
     </>
