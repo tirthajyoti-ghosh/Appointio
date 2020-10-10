@@ -6,6 +6,7 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
 import './styles/reset.css';
+import './styles/index.sass';
 import './styles/style.sass';
 
 import App from './components/App';

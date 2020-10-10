@@ -7,13 +7,11 @@ import ApartmentDetails from '../containers/ApartmentDetails';
 import ApartmentsByType from '../containers/ApartmentsByType';
 import Login from '../containers/auth/Login';
 import Registrations from '../containers/auth/Registrations';
-import Profile from '../containers/Profile';
 import SideNav from './Sidenav';
 
 const App = () => (
   <>
     <SideNav />
-    <Profile />
     <main>
       <Router>
         <Switch>
