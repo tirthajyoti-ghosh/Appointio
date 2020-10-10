@@ -9,9 +9,8 @@ import { ADD_APARTMENT_DETAILS } from '../constants';
 import MakeAppointment from './MakeAppointment';
 
 const ApartmentDetails = ({
-  apartmentDetails, apartmentDetailsAdder, match, user,
+  apartmentDetails, apartmentDetailsAdder, match,
 }) => {
-  const { name } = user;
   const { apartmentId } = match.params;
 
   const {
@@ -38,11 +37,6 @@ const ApartmentDetails = ({
         id !== parseInt(apartmentId, 10) ? 'Loading...' : (
           <div>
             <h1>ApartmentDetails</h1>
-            <h2>
-              Name:
-              {' '}
-              { name }
-            </h2>
 
             <p>{address}</p>
             <p>{rent}</p>
@@ -97,10 +91,6 @@ ApartmentDetails.propTypes = {
     images: PropTypes.arrayOf(PropTypes.shape({
       url: PropTypes.string,
     })),
-  }).isRequired,
-
-  user: PropTypes.shape({
-    name: PropTypes.string,
   }).isRequired,
 
   match: PropTypes.shape({

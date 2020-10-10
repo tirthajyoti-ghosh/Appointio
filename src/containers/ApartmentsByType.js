@@ -7,9 +7,8 @@ import getAllApartmentsByType from '../API/getAllApartmentsByType';
 import { ADD_APARTMENTS_BY_TYPE } from '../constants';
 
 const ApartmentsByType = ({
-  apartmentsByType, apartmentsByTypeAdder, match, user,
+  apartmentsByType, apartmentsByTypeAdder, match,
 }) => {
-  const { name } = user;
   const { typeId, typeName } = match.params;
 
   useEffect(() => {
@@ -24,11 +23,6 @@ const ApartmentsByType = ({
         {' '}
         apartments
       </h1>
-      <h2>
-        Name:
-        {' '}
-        { name }
-      </h2>
 
       <ul>
         {
@@ -76,11 +70,7 @@ ApartmentsByType.propTypes = {
       url: PropTypes.string.isRequired,
     })).isRequired,
   }).isRequired).isRequired,
-
-  user: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-  }).isRequired,
-
+  
   match: PropTypes.shape({
     params: PropTypes.shape({
       typeId: PropTypes.string.isRequired,

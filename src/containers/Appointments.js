@@ -5,9 +5,7 @@ import getAllAppointments from '../API/getAllAppointments';
 import { ADD_APPOINTMENTS } from '../constants';
 import DeleteAppointment from './DeleteAppointment';
 
-const Appointments = ({ appointments, appointmentsAdder, user }) => {
-  const { name } = user;
-
+const Appointments = ({ appointments, appointmentsAdder }) => {
   useEffect(() => {
     getAllAppointments().then(appointments => appointmentsAdder(appointments));
   }, []);
@@ -15,11 +13,6 @@ const Appointments = ({ appointments, appointmentsAdder, user }) => {
   return (
     <div>
       <h1>Appointments</h1>
-      <h2>
-        Name:
-        {' '}
-        { name }
-      </h2>
 
       <ul>
         {

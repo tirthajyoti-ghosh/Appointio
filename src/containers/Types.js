@@ -4,9 +4,7 @@ import { connect } from 'react-redux';
 import getAllTypes from '../API/getAllTypes';
 import { ADD_TYPES } from '../constants';
 
-const Types = ({ types, typesAdder, user }) => {
-  const { name } = user;
-
+const Types = ({ types, typesAdder }) => {
   useEffect(() => {
     getAllTypes().then(types => typesAdder(types));
   }, []);
@@ -14,11 +12,6 @@ const Types = ({ types, typesAdder, user }) => {
   return (
     <div>
       <h1>Types</h1>
-      <h2>
-        Name:
-        {' '}
-        { name }
-      </h2>
 
       <ul>
         {

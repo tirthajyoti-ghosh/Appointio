@@ -5,9 +5,7 @@ import PropTypes from 'prop-types';
 import getAllApartments from '../API/getAllApartments';
 import { ADD_APARTMENTS } from '../constants';
 
-const Apartments = ({ apartments, apartmentsAdder, user }) => {
-  const { name } = user;
-
+const Apartments = ({ apartments, apartmentsAdder }) => {
   useEffect(() => {
     getAllApartments().then(apartments => apartmentsAdder(apartments));
   }, []);
@@ -15,11 +13,6 @@ const Apartments = ({ apartments, apartmentsAdder, user }) => {
   return (
     <div>
       <h1>Apartments</h1>
-      <h2>
-        Name:
-        {' '}
-        { name }
-      </h2>
 
       <ul>
         {
@@ -66,10 +59,6 @@ Apartments.propTypes = {
       url: PropTypes.string,
     })),
   })).isRequired,
-
-  user: PropTypes.shape({
-    name: PropTypes.string,
-  }).isRequired,
 };
 
 export default connect(
