@@ -51,6 +51,7 @@
     "eslint-plugin-react-hooks": "^2.5.1",
     "history": "^5.0.0",
     "node-fetch": "^2.6.1",
+    "redux-devtools-extension": "^2.13.8",
     "stylelint": "^13.3.3",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-csstree-validator": "^1.8.0",
