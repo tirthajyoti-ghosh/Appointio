@@ -25,7 +25,7 @@ const Profile = ({
     <>
       {
         Object.keys(user).length === 0
-          ? <a href="/login">Login</a>
+          ? <a className="login-btn" href="/login">Login</a>
           : (
             <div className="profile">
               <div className="avatar">{user.name.split('')[0]}</div>
