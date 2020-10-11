@@ -61,8 +61,8 @@ Profile.propTypes = {
   updateLoggedInStatus: PropTypes.func.isRequired,
 
   user: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
+    name: PropTypes.string,
+    email: PropTypes.string,
   }).isRequired,
 
   loggedInStatus: PropTypes.string.isRequired,
