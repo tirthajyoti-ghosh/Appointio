@@ -7,6 +7,7 @@ import getApartmentDetails from '../API/getApartmentDetails';
 import { ADD_APARTMENT_DETAILS } from '../constants';
 
 import MakeAppointment from './MakeAppointment';
+import ApartmentImageGallery from '../components/ApartmentImageGallery';
 
 const ApartmentDetails = ({
   apartmentDetails, apartmentDetailsAdder, match,
@@ -38,6 +39,8 @@ const ApartmentDetails = ({
           <div>
             <h1>ApartmentDetails</h1>
 
+            <ApartmentImageGallery images={images} />
+
             <p>{address}</p>
             <p>{rent}</p>
             <p>{reviews}</p>
@@ -45,15 +48,6 @@ const ApartmentDetails = ({
             <p>{deposit}</p>
             <p>{squareFeet}</p>
             <p>{leaseLength}</p>
-            <p>
-              {
-                images === undefined ? 'Loading...' : (
-                  images.map(image => (
-                    <img key={image.id} src={image.url} alt="" />
-                  ))
-                )
-              }
-            </p>
             <p>{type}</p>
 
             <MakeAppointment apartmentId={apartmentId} />
