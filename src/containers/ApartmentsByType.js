@@ -18,7 +18,7 @@ const ApartmentsByType = ({
 
   return (
     <>
-      <h1 className="type-name">
+      <h1 className="heading">
         <span>{typeName}</span>
         {' '}
         apartments

@@ -11,7 +11,7 @@ const DeleteAppointment = ({ appointmentId, appointments, deleteAppointment }) =
   };
 
   return (
-    <button type="button" onClick={handleClick}>Delete</button>
+    <button className="delete-btn" type="button" onClick={handleClick}>Delete</button>
   );
 };
 

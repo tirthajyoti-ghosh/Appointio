@@ -1,3 +1,7 @@
+$primary-bg-color: #97bf0f
+$primary-color: #fff
+$secondary-text-color: #484848
+  
 @mixin flex($justify-content, $align-items)
   display: flex
   justify-content: $justify-content
@@ -6,6 +10,7 @@
 #root
   main
     margin-left: 195px
+    width: calc( 100vw - 195px )
   
   .sidenav
     width: 195px
@@ -14,7 +19,7 @@
     z-index: 1000
     top: 0
     left: 0
-    background-color: #fff
+    background-color: $primary-color
     border-right: 2px solid #e9e9e9
 
     a
@@ -25,12 +30,12 @@
       line-height: 15px
       font-weight: bold
       text-transform: uppercase
-      color: #484848
+      color: $secondary-text-color
       display: block
 
       &:hover        
-        background-color: rgb(151, 191, 15)
-        color: #fff
+        background-color: $primary-bg-color
+        color: $primary-color
 
     .logo
       width: 100%
@@ -80,7 +85,7 @@
         @include flex($justify-content: center, $align-items: center)        
         border-radius: 50%
         background-color: #97BF0F
-        color: #fff
+        color: $primary-color
         text-transform: uppercase
         line-height: 17px
         font-size: 12px
@@ -102,9 +107,10 @@
         border: none
         background-color: transparent
 
-  .type-name
+  .heading
     text-align: center
     margin-top: 50px
+    color: $secondary-text-color
 
     span
       text-transform: capitalize
@@ -161,5 +167,45 @@
           font-size: 13px
           opacity: 0.6
 
+  .appointments-table
+    margin: 50px auto
+    max-width: 900px
+    width: 95%
+    color: $secondary-text-color
+    border-collapse: collapse
+
+    td, th
+      padding: 8px 14px
+      text-align: left
+      font-size: 0.9rem
+
+    thead
+      width: 100%
+      background-color: $primary-bg-color
+      border: none
+      border-spacing: 0
+      color: $primary-color
+      text-transform: uppercase
+      letter-spacing: 1px
+
+    tbody
+      width: 100%
+
+      td
+        border-bottom: 1px solid #cfd0d6
+
+        a
+          color: $secondary-text-color
+
+      .delete-btn
+        border: none
+        outline: none
+        background-color: #DC3545
+        color: $primary-color
+        padding: 10px
+        border-radius: 5px
+        cursor: pointer
+
+    
       
 

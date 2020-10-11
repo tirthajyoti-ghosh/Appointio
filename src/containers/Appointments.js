@@ -12,21 +12,34 @@ const Appointments = ({ appointments, appointmentsAdder }) => {
 
   return (
     <div>
-      <h1>Appointments</h1>
+      <h1 className="heading">Your Appointments</h1>
 
-      <ul>
-        {
-          appointments.map(appointment => (
-            <li key={appointment.id}>
-              {appointment.date}
-              {' '}
-              |
-              {' '}
-              <DeleteAppointment appointmentId={appointment.id} />
-            </li>
-          ))
-        }
-      </ul>
+      <table className="appointments-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Apartment</th>
+            <th>Date</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            appointments.map((appointment, index) => (
+              <tr className="appointment" key={appointment.id}>
+                <td>{index + 1}</td>
+                <td>
+                  <a href={`/apartments/${appointment.apartment_id}`}>
+                    {appointment.apartment_address}
+                  </a>
+                </td>
+                <td>{appointment.date}</td>
+                <td><DeleteAppointment appointmentId={appointment.id} /></td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
     </div>
   );
 };
