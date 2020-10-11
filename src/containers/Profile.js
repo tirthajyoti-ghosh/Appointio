@@ -19,12 +19,12 @@ const Profile = ({
           updateLoginStatus('NOT_LOGGED_IN');
         }
       });
-  });
+  }, [loggedInStatus]); // Does not work "on mount" because component mounts only once
 
   return (
     <>
       {
-        Object.keys(user).length === 0
+        user.name === undefined
           ? <a className="login-btn" href="/login">Login</a>
           : (
             <div className="profile">
