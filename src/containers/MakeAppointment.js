@@ -16,10 +16,10 @@ const MakeAppointment = ({ apartmentId }) => {
 
   return (
     <>
-      <p>{message}</p>
       <form onSubmit={handleAppointmentSubmit}>
         <input type="datetime-local" />
         <button type="submit">Make An Appointment</button>
+        <p>{message}</p>
       </form>
     </>
   );

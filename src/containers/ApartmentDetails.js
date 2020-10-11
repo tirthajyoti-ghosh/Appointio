@@ -36,22 +36,44 @@ const ApartmentDetails = ({
     <>
       {
         id !== parseInt(apartmentId, 10) ? 'Loading...' : (
-          <div>
-            <h1>ApartmentDetails</h1>
+          <div className="apartment-details">
+            <div className="gallery">
+              <ApartmentImageGallery images={images} />
+            </div>
 
-            <ApartmentImageGallery images={images} />
+            <div className="apartment-info">
+              <h1>{address}</h1>
+              <p>
+                <span className="label">Rent</span>
+                <span className="text">$ {rent}</span>
+              </p>
+              <p>
+                <span className="label">Reviews</span>
+                <span className="text">{reviews}</span>
+              </p>
+              <p>
+                <span className="label">Amenities</span>
+                <span className="text">{amenities}</span>
+              </p>
+              <p>
+                <span className="label">Deposit</span>
+                <span className="text">$ {deposit}</span>
+              </p>
+              <p>
+                <span className="label">Sq.Ft.</span>
+                <span className="text">{squareFeet}</span>
+              </p>
+              <p>
+                <span className="label">Lease Length</span>
+                <span className="text">{leaseLength}</span>
+              </p>
+              <p>
+                <span className="label">Type</span>
+                <span className="text">{type}</span>
+              </p>
 
-            <p>{address}</p>
-            <p>{rent}</p>
-            <p>{reviews}</p>
-            <p>{amenities}</p>
-            <p>{deposit}</p>
-            <p>{squareFeet}</p>
-            <p>{leaseLength}</p>
-            <p>{type}</p>
-
-            <MakeAppointment apartmentId={apartmentId} />
-
+              <MakeAppointment apartmentId={apartmentId} />
+            </div>
           </div>
         )
       }
