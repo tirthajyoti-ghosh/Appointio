@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
+import PropTypes from 'prop-types';
+
 import getAllTypes from '../API/getAllTypes';
 import { ADD_TYPES } from '../constants';
 
@@ -30,6 +32,11 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   typesAdder: types => dispatch({ type: ADD_TYPES, types }),
 });
+
+Types.propTypes = {
+  types: PropTypes.arrayOf(PropTypes.object).isRequired,
+  typesAdder: PropTypes.func.isRequired,
+};
 
 export default connect(
   mapStateToProps,

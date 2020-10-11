@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
+import PropTypes from 'prop-types';
+
 import getAllAppointments from '../API/getAllAppointments';
 import { ADD_APPOINTMENTS } from '../constants';
 import DeleteAppointment from './DeleteAppointment';
 
-const Appointments = ({ appointments, appointmentsAdder, loggedInStatus }) => {
+const Appointments = ({ appointments, appointmentsAdder }) => {
   useEffect(() => {
     getAllAppointments().then(appointments => appointmentsAdder(appointments));
   }, []);
@@ -52,6 +54,17 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   appointmentsAdder: appointments => dispatch({ type: ADD_APPOINTMENTS, appointments }),
 });
+
+Appointments.propTypes = {
+  appointmentsAdder: PropTypes.func.isRequired,
+
+  appointments: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    apartment_id: PropTypes.number,
+    apartment_address: PropTypes.string,
+    date: PropTypes.string,
+  })).isRequired,
+};
 
 export default connect(
   mapStateToProps,

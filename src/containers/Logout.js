@@ -1,15 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import PropTypes from 'prop-types';
+
 import { REMOVE_USER, UPDATE_LOGIN_STATUS } from '../constants';
 import logout from '../API/logout';
 
-const Logout = ({ removeUser, updateLoginStatus }) => {
+const Logout = ({ removeUser, updateLoggedInStatus }) => {
   const handleLogout = () => {
     logout()
       .then(() => {
         removeUser();
-        updateLoginStatus('NOT_LOGGED_IN');
+        updateLoggedInStatus('NOT_LOGGED_IN');
       });
   };
   return (
@@ -24,8 +26,13 @@ const Logout = ({ removeUser, updateLoginStatus }) => {
 
 const mapDispatchToProps = dispatch => ({
   removeUser: () => dispatch({ type: REMOVE_USER }),
-  updateLoginStatus: status => dispatch({ type: UPDATE_LOGIN_STATUS, status }),
+  updateLoggedInStatus: status => dispatch({ type: UPDATE_LOGIN_STATUS, status }),
 });
+
+Logout.propTypes = {
+  removeUser: PropTypes.func.isRequired,
+  updateLoggedInStatus: PropTypes.func.isRequired,
+};
 
 export default connect(
   null,

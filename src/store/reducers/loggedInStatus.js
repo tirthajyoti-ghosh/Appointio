@@ -1,6 +1,6 @@
 import { UPDATE_LOGIN_STATUS } from '../../constants';
 
-const loginStatus = (state = 'NOT_LOGGED_IN', action) => {
+const loggedInStatus = (state = 'NOT_LOGGED_IN', action) => {
   switch (action.type) {
     case UPDATE_LOGIN_STATUS:
       return action.status;
@@ -9,4 +9,4 @@ const loginStatus = (state = 'NOT_LOGGED_IN', action) => {
   }
 };
 
-export default loginStatus;
+export default loggedInStatus;

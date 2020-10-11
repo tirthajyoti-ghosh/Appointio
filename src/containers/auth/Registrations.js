@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import PropTypes from 'prop-types';
+
 import register from '../../API/register';
 import { STORE_USER, UPDATE_LOGIN_STATUS } from '../../constants';
 
-const Registrations = ({ storeUser, updateLoginStatus }) => {
+const Registrations = ({ storeUser, updateLoggedInStatus }) => {
   const initialState = {
     name: '',
     email: '',
@@ -30,7 +32,7 @@ const Registrations = ({ storeUser, updateLoginStatus }) => {
 
   const handleSuccessfulAuth = data => {
     storeUser(data);
-    updateLoginStatus('LOGGED_IN');
+    updateLoggedInStatus('LOGGED_IN');
     redirectBack();
   };
 
@@ -73,8 +75,13 @@ const Registrations = ({ storeUser, updateLoginStatus }) => {
 
 const mapDispatchToProps = dispatch => ({
   storeUser: user => dispatch({ type: STORE_USER, user }),
-  updateLoginStatus: status => dispatch({ type: UPDATE_LOGIN_STATUS, status }),
+  updateLoggedInStatus: status => dispatch({ type: UPDATE_LOGIN_STATUS, status }),
 });
+
+Registrations.propTypes = {
+  storeUser: PropTypes.func.isRequired,
+  updateLoggedInStatus: PropTypes.func.isRequired,
+};
 
 export default connect(
   null,

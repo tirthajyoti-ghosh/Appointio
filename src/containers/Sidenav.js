@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import PropTypes from 'prop-types';
+
 import Profile from './Profile';
 import Types from './Types';
 
@@ -23,6 +25,10 @@ const SideNav = ({ loggedInStatus }) => (
 const mapStateToProps = state => ({
   loggedInStatus: state.loggedInStatus,
 });
+
+SideNav.propTypes = {
+  loggedInStatus: PropTypes.string.isRequired,
+};
 
 export default connect(
   mapStateToProps,

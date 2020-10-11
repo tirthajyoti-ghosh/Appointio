@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import PropTypes from 'prop-types';
+
 import login from '../../API/login';
 import { STORE_USER, UPDATE_LOGIN_STATUS } from '../../constants';
 
-const Login = ({ storeUser, updateLoginStatus }) => {
+const Login = ({ storeUser, updateLoggedInStatus }) => {
   const initialState = {
     email: '',
     password: '',
@@ -27,7 +29,7 @@ const Login = ({ storeUser, updateLoginStatus }) => {
 
   const handleSuccessfulAuth = data => {
     storeUser(data);
-    updateLoginStatus('LOGGED_IN');
+    updateLoggedInStatus('LOGGED_IN');
     redirectBack();
   };
 
@@ -66,8 +68,13 @@ const Login = ({ storeUser, updateLoginStatus }) => {
 
 const mapDispatchToProps = dispatch => ({
   storeUser: user => dispatch({ type: STORE_USER, user }),
-  updateLoginStatus: status => dispatch({ type: UPDATE_LOGIN_STATUS, status }),
+  updateLoggedInStatus: status => dispatch({ type: UPDATE_LOGIN_STATUS, status }),
 });
+
+Login.propTypes = {
+  storeUser: PropTypes.func.isRequired,
+  updateLoggedInStatus: PropTypes.func.isRequired,
+};
 
 export default connect(
   null,
