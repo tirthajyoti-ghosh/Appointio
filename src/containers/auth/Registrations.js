@@ -59,17 +59,37 @@ const Registrations = ({ storeUser, updateLoggedInStatus }) => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Name" name="name" onChange={handleChange} value={user.name} required />
-        <input type="email" placeholder="Email" name="email" onChange={handleChange} value={user.email} required />
-        <input type="password" placeholder="Password" name="password" onChange={handleChange} value={user.password} required />
-        <input type="password" placeholder="Password Confimation" name="password_confirmation" onChange={handleChange} value={user.password_confirmation} required />
+    <form className="auth" onSubmit={handleSubmit}>
+      <h1 className="heading">Register</h1>
 
+      { errors.length === 0 ? '' : errors.map(error => <p key={error}>{error}</p>) }
+
+      <div className="input-group">
+        <input type="text" placeholder="Name" name="name" onChange={handleChange} value={user.name} required />
+      </div>
+
+      <div className="input-group">
+        <input type="email" placeholder="Email" name="email" onChange={handleChange} value={user.email} required />
+      </div>
+      <div className="input-group">
+        <input type="password" placeholder="Password" name="password" onChange={handleChange} value={user.password} required />
+      </div>
+
+      <div className="input-group">
+        <input type="password" placeholder="Password Confimation" name="password_confirmation" onChange={handleChange} value={user.password_confirmation} required />
+      </div>
+
+      <div className="input-group">
         <button type="submit">{ loading ? 'Submitting...' : 'Register' }</button>
-        { errors.length === 0 ? '' : errors.map(error => <p key={error}>{error}</p>) }
-      </form>
-    </div>
+      </div>
+
+      <p>
+        Already have an account?
+        {' '}
+        <a href="/login"> Login</a>
+      </p>
+    </form>
+
   );
 };
 

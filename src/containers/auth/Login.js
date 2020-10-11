@@ -56,12 +56,27 @@ const Login = ({ storeUser, updateLoggedInStatus }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="email" placeholder="Email" name="email" onChange={handleChange} value={user.email} required />
-      <input type="password" placeholder="Password" name="password" onChange={handleChange} value={user.password} required />
+    <form className="auth" onSubmit={handleSubmit}>
+      <h1 className="heading">Login</h1>
 
-      <button type="submit">{ loading ? 'Submitting...' : 'Login' }</button>
       { errors !== '' ? <p>{errors}</p> : '' }
+
+      <div className="input-group">
+        <input type="email" placeholder="Email" name="email" onChange={handleChange} value={user.email} required />
+      </div>
+      <div className="input-group">
+        <input type="password" placeholder="Password" name="password" onChange={handleChange} value={user.password} required />
+      </div>
+
+      <div className="input-group">
+        <button type="submit">{ loading ? 'Submitting...' : 'Login' }</button>
+      </div>
+
+      <p>
+        Don&apos;t have an account?
+        {' '}
+        <a href="/register"> Register</a>
+      </p>
     </form>
   );
 };
