@@ -5,7 +5,7 @@ import getAllAppointments from '../API/getAllAppointments';
 import { ADD_APPOINTMENTS } from '../constants';
 import DeleteAppointment from './DeleteAppointment';
 
-const Appointments = ({ appointments, appointmentsAdder }) => {
+const Appointments = ({ appointments, appointmentsAdder, loggedInStatus }) => {
   useEffect(() => {
     getAllAppointments().then(appointments => appointmentsAdder(appointments));
   }, []);
@@ -46,6 +46,7 @@ const Appointments = ({ appointments, appointmentsAdder }) => {
 
 const mapStateToProps = state => ({
   appointments: state.appointments,
+  loggedInStatus: state.loggedInStatus,
 });
 
 const mapDispatchToProps = dispatch => ({

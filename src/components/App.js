@@ -7,7 +7,7 @@ import ApartmentDetails from '../containers/ApartmentDetails';
 import ApartmentsByType from '../containers/ApartmentsByType';
 import Login from '../containers/auth/Login';
 import Registrations from '../containers/auth/Registrations';
-import SideNav from './Sidenav';
+import SideNav from '../containers/Sidenav';
 
 const App = () => (
   <>

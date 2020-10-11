@@ -10,7 +10,7 @@ import MakeAppointment from './MakeAppointment';
 import ApartmentImageGallery from '../components/ApartmentImageGallery';
 
 const ApartmentDetails = ({
-  apartmentDetails, apartmentDetailsAdder, match,
+  apartmentDetails, apartmentDetailsAdder, match, loggedInStatus,
 }) => {
   const { apartmentId } = match.params;
 
@@ -45,7 +45,11 @@ const ApartmentDetails = ({
               <h1>{address}</h1>
               <p>
                 <span className="label">Rent</span>
-                <span className="text">$ {rent}</span>
+                <span className="text">
+                  $
+                  {' '}
+                  {rent}
+                </span>
               </p>
               <p>
                 <span className="label">Reviews</span>
@@ -57,7 +61,11 @@ const ApartmentDetails = ({
               </p>
               <p>
                 <span className="label">Deposit</span>
-                <span className="text">$ {deposit}</span>
+                <span className="text">
+                  $
+                  {' '}
+                  {deposit}
+                </span>
               </p>
               <p>
                 <span className="label">Sq.Ft.</span>
@@ -72,7 +80,11 @@ const ApartmentDetails = ({
                 <span className="text">{type}</span>
               </p>
 
-              <MakeAppointment apartmentId={apartmentId} />
+              {
+                loggedInStatus === 'NOT_LOGGED_IN'
+                  ? <p>You need to login to make an appointment</p>
+                  : <MakeAppointment apartmentId={apartmentId} />
+              }
             </div>
           </div>
         )
@@ -83,6 +95,7 @@ const ApartmentDetails = ({
 
 const mapStateToProps = state => ({
   apartmentDetails: state.apartmentDetails,
+  loggedInStatus: state.loggedInStatus,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -92,6 +105,7 @@ const mapDispatchToProps = dispatch => ({
 
 ApartmentDetails.propTypes = {
   apartmentDetailsAdder: PropTypes.func.isRequired,
+  loggedInStatus: PropTypes.string.isRequired,
 
   apartmentDetails: PropTypes.shape({
     id: PropTypes.number,
