@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { BASE_URL } from '../constants';
+import { REACT_APP_BASE_URL } from '../constants';
 
 const deleteAppointment = appointmentId => (
-  axios.delete(`${BASE_URL}/appointments/${appointmentId}`, { withCredentials: true })
+  axios.delete(`${REACT_APP_BASE_URL}/appointments/${appointmentId}`, { withCredentials: true })
     .then(response => response.status)
 );
 

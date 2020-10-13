@@ -8,4 +8,4 @@ export const STORE_USER = 'STORE_USER';
 export const REMOVE_USER = 'REMOVE_USER';
 export const UPDATE_LOGIN_STATUS = 'UPDATE_LOGIN_STATUS';
 
-export const { BASE_URL } = process.env;
+export const { REACT_APP_BASE_URL } = process.env;
