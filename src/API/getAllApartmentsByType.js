@@ -1,7 +1,8 @@
 import axios from 'axios';
+import { BASE_URL } from '../constants';
 
 const getAllApartmentsByType = typeId => axios
-  .get(`http://localhost:3001/types/${typeId}`, { withCredentials: true })
+  .get(`${BASE_URL}/types/${typeId}`, { withCredentials: true })
   .then(response => (response.data.apartments));
 
 export default getAllApartmentsByType;

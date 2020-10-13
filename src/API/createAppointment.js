@@ -1,7 +1,8 @@
 import axios from 'axios';
+import { BASE_URL } from '../constants';
 
 const createAppointment = (date, apartmentId) => (
-  axios.post('http://localhost:3001/appointments', {
+  axios.post(`${BASE_URL}/appointments`, {
     appointment: {
       date,
       apartment_id: apartmentId,

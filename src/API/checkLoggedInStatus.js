@@ -1,8 +1,9 @@
 import axios from 'axios';
+import { BASE_URL } from '../constants';
 
 const checkLoggedInStatus = () => (
   axios
-    .get('http://localhost:3001/logged_in', { withCredentials: true })
+    .get(`${BASE_URL}/logged_in`, { withCredentials: true })
     .then(response => response)
 );
 

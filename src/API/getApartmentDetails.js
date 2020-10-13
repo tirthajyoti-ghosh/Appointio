@@ -1,7 +1,8 @@
 import axios from 'axios';
+import { BASE_URL } from '../constants';
 
 const getApartmentDetails = apartmentId => axios
-  .get(`http://localhost:3001/apartments/${apartmentId}`, { withCredentials: true })
+  .get(`${BASE_URL}/apartments/${apartmentId}`, { withCredentials: true })
   .then(response => (response.data));
 
 export default getApartmentDetails;

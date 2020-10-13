@@ -1,8 +1,9 @@
 import axios from 'axios';
+import { BASE_URL } from '../constants';
 
 const logout = () => (
   axios
-    .delete('http://localhost:3001/logout', { withCredentials: true })
+    .delete(`${BASE_URL}/logout`, { withCredentials: true })
 );
 
 export default logout;

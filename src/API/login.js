@@ -1,7 +1,8 @@
 import axios from 'axios';
+import { BASE_URL } from '../constants';
 
 const login = (email, password) => (
-  axios.post('http://localhost:3001/login', {
+  axios.post(`${BASE_URL}/login`, {
     user: {
       email, password,
     },
