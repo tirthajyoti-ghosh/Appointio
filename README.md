@@ -58,6 +58,7 @@
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
 * [Usage](#usage)
+* [Run Tests](#run-tests)
 * [Roadmap](#roadmap)
 * [Contributing](#contributing)
 * [License](#license)
@@ -96,7 +97,7 @@ Deployed to Netlify - [live demo](https://adoring-pike-d04b95.netlify.app/).
 <!-- GETTING STARTED -->
 ## Getting Started
 
-You need the back-end server for this app to work. You can find the intructions to setup back-end server locally [here](https://github.com/tirthajyoti-ghosh/final-capstone-backend)
+You need the back-end server for this app to work. You can find the intructions to setup back-end server locally [here](https://github.com/tirthajyoti-ghosh/final-capstone-backend).
 
 To get a local copy up and running follow these simple steps.
 
@@ -128,9 +129,19 @@ To get a local copy up and running follow these simple steps.
     REACT_APP_BASE_URL=http://localhost:3001 npm start
     ```
 
-    Please note that only `npm start` won't work as this app relies on this environment variable
+    Please note that only `npm start` won't work as this app relies on this environment variable.
 
 4. Visit `http://localhost:3000/` in your browser.
+
+## Run Tests
+
+**IMPORTANT!** You need the back-end server for the tests to work. You can find the intructions to setup back-end server locally [here](https://github.com/tirthajyoti-ghosh/final-capstone-backend).
+
+```sh
+REACT_APP_BASE_URL=http://localhost:3001 npm test
+```
+
+Please note that only `npm test` won't work as this app relies on this environment variable.
 
 <!-- ROADMAP -->
 ## Roadmap
