@@ -7,7 +7,7 @@ import { render, screen } from '@testing-library/react';
 import TestApp from '../../helpers/TestApp';
 
 describe('Apartments/index page', () => {
-  test("has text 'Browse all apartments'", () => {
+  beforeEach(() => {
     const history = createMemoryHistory();
     history.push('/');
     render(
@@ -15,33 +15,21 @@ describe('Apartments/index page', () => {
         <TestApp />
       </Router>,
     );
+  });
 
+  test("has text 'Browse all apartments'", () => {
     expect(screen.getByText('Browse all apartments')).toBeInTheDocument();
   });
 
   test('contains a list of apartments', async () => {
-    const history = createMemoryHistory();
-    history.push('/');
-    render(
-      <Router history={history}>
-        <TestApp />
-      </Router>,
-    );
-
     const result = await screen.findAllByText(/rating/);
+
     expect(result).toBeTruthy();
   });
 
   test('has one image per apartment', async () => {
-    const history = createMemoryHistory();
-    history.push('/');
-    render(
-      <Router history={history}>
-        <TestApp />
-      </Router>,
-    );
-
     const result = await screen.findAllByAltText(/apartment/);
+
     expect(result).toBeTruthy();
   });
 });
