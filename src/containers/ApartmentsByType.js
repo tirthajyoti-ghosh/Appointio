@@ -29,7 +29,7 @@ const ApartmentsByType = ({
             <div className="apartment" key={apartment.id}>
               <a href={`/apartments/${apartment.id}`} className="link"> </a>
 
-              <img src={apartment.images[0].url} alt="" />
+              <img src={apartment.images[0].url} alt="apartment" />
 
               <h3>{apartment.address}</h3>
               <hr />
