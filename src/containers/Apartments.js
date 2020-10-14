@@ -14,10 +14,10 @@ const Apartments = ({ apartments, apartmentsAdder }) => {
   return (
     <>
       <h1 className="heading">Browse all apartments</h1>
-      <div className="apartments-list">
+      <section className="apartments-list">
         {
           apartments.map(apartment => (
-            <div className="apartment" key={apartment.id}>
+            <article className="apartment" key={apartment.id}>
               <a href={`/apartments/${apartment.id}`} className="link"> </a>
 
               <img src={apartment.images[0].url} alt="apartment" />
@@ -46,10 +46,10 @@ const Apartments = ({ apartments, apartmentsAdder }) => {
                   <p className="side-text">sq.ft.</p>
                 </h4>
               </div>
-            </div>
+            </article>
           ))
         }
-      </div>
+      </section>
     </>
   );
 };

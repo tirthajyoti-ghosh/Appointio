@@ -29,7 +29,7 @@ const Profile = ({
         user.name === undefined
           ? <a className="login-btn" href="/login">Login</a>
           : (
-            <div className="profile">
+            <section className="profile">
               <div className="avatar">{user.name.split('')[0]}</div>
               <div>
                 <p className="name">{user.name}</p>
@@ -37,7 +37,7 @@ const Profile = ({
               </div>
 
               <Logout />
-            </div>
+            </section>
           )
       }
     </>

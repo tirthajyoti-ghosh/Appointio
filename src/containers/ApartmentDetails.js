@@ -36,12 +36,12 @@ const ApartmentDetails = ({
     <>
       {
         id !== parseInt(apartmentId, 10) ? 'Loading...' : (
-          <div className="apartment-details">
-            <div className="gallery">
+          <article className="apartment-details">
+            <section className="gallery">
               <ApartmentImageGallery images={images} />
-            </div>
+            </section>
 
-            <div className="apartment-info">
+            <section className="apartment-info">
               <h1>{address}</h1>
               <p>
                 <span className="label">Rent</span>
@@ -85,8 +85,8 @@ const ApartmentDetails = ({
                   ? <p>You need to login to make an appointment</p>
                   : <MakeAppointment apartmentId={apartmentId} />
               }
-            </div>
-          </div>
+            </section>
+          </article>
         )
       }
     </>

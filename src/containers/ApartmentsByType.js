@@ -23,10 +23,10 @@ const ApartmentsByType = ({
         {' '}
         apartments
       </h1>
-      <div className="apartments-list">
+      <section className="apartments-list">
         {
           apartmentsByType.map(apartment => (
-            <div className="apartment" key={apartment.id}>
+            <article className="apartment" key={apartment.id}>
               <a href={`/apartments/${apartment.id}`} className="link"> </a>
 
               <img src={apartment.images[0].url} alt="apartment" />
@@ -55,10 +55,10 @@ const ApartmentsByType = ({
                   <p className="side-text"> sq.ft.</p>
                 </h4>
               </div>
-            </div>
+            </article>
           ))
         }
-      </div>
+      </section>
     </>
   );
 };
