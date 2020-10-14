@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
-import App from '../components/App';
+import AppRoutes from '../components/AppRoutes';
 import reducer from '../store/reducers/index';
 
 const initialState = {
@@ -20,7 +20,7 @@ const store = createStore(reducer, initialState, applyMiddleware(thunk));
 
 const TestApp = () => (
   <Provider store={store}>
-    <App />
+    <AppRoutes />
   </Provider>
 );
 
