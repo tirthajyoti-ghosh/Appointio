@@ -137,6 +137,7 @@ To get a local copy up and running follow these simple steps.
 
 **IMPORTANT!** You need the back-end server for the tests to work. You can find the intructions to setup back-end server locally [here](https://github.com/tirthajyoti-ghosh/final-capstone-backend).
 
+Run this command in your terminal:
 ```sh
 REACT_APP_BASE_URL=http://localhost:3001 npm test
 ```
