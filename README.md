@@ -36,7 +36,7 @@
   <h3 align="center">Appointio (front-end)</h3>
 
   <p align="center">
-    Browse apartments and schedule a tour before you rent.
+    Browse apartments and schedule a tour before you rent. Built with React/Redux and <a href="https://github.com/tirthajyoti-ghosh/Appointio-back-end">Rails back-end</a>.
     <br />
     <a href="https://github.com/tirthajyoti-ghosh/final-capstone-frontend"><strong>Explore the docs »</strong></a>
     <br />
