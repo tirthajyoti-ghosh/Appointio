@@ -1,0 +1,313 @@
+$primary-bg-color: #97bf0f
+$primary-color: #fff
+$secondary-text-color: #484848
+  
+@mixin flex($justify-content, $align-items)
+  display: flex
+  justify-content: $justify-content
+  align-items: $align-items
+  
+#root
+  main
+    margin-left: 195px
+    width: calc( 100% - 195px )
+  
+  .sidenav
+    width: 195px
+    height: 100%
+    position: fixed
+    z-index: 1000
+    top: 0
+    left: 0
+    background-color: $primary-color
+    border-right: 2px solid #e9e9e9
+    overflow-y: auto
+
+    a
+      padding: 20px
+      text-decoration: none
+      font-size: 16px
+      letter-spacing: 2px
+      line-height: 15px
+      font-weight: bold
+      text-transform: uppercase
+      color: $secondary-text-color
+      display: block
+
+      &:hover        
+        background-color: $primary-bg-color
+        color: $primary-color
+
+    .logo
+      width: 100%
+      height: 115px
+      padding: 0
+
+      &:hover        
+        background-color: unset
+        color: unset
+
+      img
+        width: 100%
+        height: 100%
+   
+    .types-list
+      margin: 50px 0
+
+      @media screen and ( max-height: 715px )
+        margin-top: 0
+        margin-bottom: 20px
+
+    .appointments
+      margin: 50px 0
+      border-top: 1px solid #e9e9e9
+      border-bottom: 1px solid #e9e9e9
+
+      @media screen and ( max-height: 715px )
+        margin-top: 0
+
+    .profile
+      position: absolute
+      bottom: 0
+      right: 0
+      left: 0
+      width: 100%
+      padding: 0 15px
+      margin: 50px 0
+      display: flex
+      justify-content: space-between
+
+      @media screen and ( max-height: 715px )
+        position: unset
+
+      .avatar
+        width: 32px
+        height: 32px
+        @include flex($justify-content: center, $align-items: center)        
+        border-radius: 50%
+        background-color: #97BF0F
+        color: $primary-color
+        text-transform: uppercase
+        line-height: 17px
+        font-size: 12px
+        margin-right: -10px
+
+      .name
+        font-weight: 700
+        font-size: 14px
+        line-height: 16px
+        color: #000
+        margin-bottom: 6px
+
+      .email
+        font-size: 12px
+        color: #727283
+
+      .logout-btn
+        outline: none
+        border: none
+        background-color: transparent
+
+    .login-btn
+      background-color: $primary-bg-color
+      color: $primary-color
+      text-align: center
+      margin: 0 30px
+      font-size: 14px
+      padding: 15px 20px
+      box-shadow: 0 1px 7px 0 #48484870
+
+      &:active
+        box-shadow: none
+        background-color: #6b880b
+
+  .heading
+    text-align: center
+    margin-top: 50px
+    color: $secondary-text-color
+
+    span
+      text-transform: capitalize
+
+  .apartments-list
+    padding: 50px 20px
+    @include flex($justify-content: unset, $align-items: unset)
+    flex-wrap: wrap
+
+    .apartment
+      width: 45%
+      padding: 10px
+      margin: 10px
+      box-shadow: 0 1px 4px 0 rgba(151,191,15,.2)
+      border-radius: 5px
+      position: relative
+      text-align: center
+
+      .link
+        position: absolute
+        left: 0
+        right: 0
+        top: 0
+        bottom: 0
+
+      img
+        width: 100%
+        height: 170px
+        object-fit: cover
+
+      h3
+        font-size: 16px
+        letter-spacing: 1px
+        margin: 20px 0
+      
+      hr
+        width: 70%
+        display: block
+        margin: 0 auto
+        margin-bottom: 30px
+
+      .type
+        text-transform: capitalize
+        margin-bottom: 30px
+
+      .stats
+        @include flex($justify-content: space-between, $align-items: center)        
+        margin-bottom: 30px
+        padding: 0 20px
+        font-weight: normal
+        font-size: 15px
+
+        .side-text
+          font-size: 13px
+          opacity: 0.6
+
+  .appointments-table
+    margin: 50px auto
+    max-width: 900px
+    width: 95%
+    color: $secondary-text-color
+    border-collapse: collapse
+
+    td, th
+      padding: 8px 14px
+      text-align: left
+      font-size: 0.9rem
+
+    thead
+      width: 100%
+      background-color: $primary-bg-color
+      border: none
+      border-spacing: 0
+      color: $primary-color
+      text-transform: uppercase
+      letter-spacing: 1px
+
+    tbody
+      width: 100%
+
+      td
+        border-bottom: 1px solid #cfd0d6
+
+        a
+          color: $secondary-text-color
+
+      .delete-btn
+        border: none
+        outline: none
+        background-color: #DC3545
+        color: $primary-color
+        padding: 10px
+        border-radius: 5px
+        cursor: pointer
+
+  .apartment-details
+    @include flex($justify-content: unset, $align-items: unset)
+    margin: 10vh 0
+    text-align: right
+    width: 100%
+    padding: 20px 10px
+
+    .gallery
+      width: 60%
+
+    .apartment-info
+      width: 40%
+      font-family: 'Roboto Condensed', sans-serif
+
+      h1
+        margin: 0 10px 20px 10px
+
+      p
+        padding: 10px 20px
+        font-size: 13px
+        background-color: #e2e3e5
+        margin: 0 10px
+
+        &:nth-of-type(even)
+          background-color: #fff
+
+        span
+          display: inline-block
+
+        .label
+          width: 50%
+          text-align: left
+          
+        .text
+          width: 50%
+          text-align: right
+
+      form
+        text-align: center
+        margin: 20px 10px
+
+        input
+          outline: none
+          border: 1px solid $primary-bg-color
+          width: 90%
+
+        button
+          background-color: $primary-bg-color
+          color: $primary-color
+          text-align: center
+          margin: 10px 30px
+          font-size: 14px
+          padding: 10px
+          border: 1px solid $primary-bg-color
+          outline: none
+
+        p
+          padding: 0
+          margin: 0
+          background-color: transparent
+
+  .auth
+    margin: 50px auto
+    padding: 20px
+    width: 400px
+
+    .heading
+      margin-top: 0
+
+    .input-group
+      input
+        width: 100%
+        outline: none
+        padding: 20px
+        margin: 20px 0
+        border: none
+        border-bottom: 1px solid $primary-bg-color
+        color: $secondary-text-color
+        font-size: 15px
+
+      button
+        outline: none
+        border: none
+        width: 100%
+        background-color: $primary-bg-color
+        color: $primary-color
+        text-transform: uppercase
+        padding: 15px
+        margin: 20px 0
+
+
