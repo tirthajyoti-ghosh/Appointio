@@ -67,7 +67,7 @@
 
 **Note**
 
-The user login.register feature is not working due to browser cross-site cookie blocking. This will be fixed in about a month when the next update is released.
+The user login/register feature is not working due to browser cross-site cookie blocking. This will be fixed in about a month when the next update is released.
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
