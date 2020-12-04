@@ -65,6 +65,10 @@
 * [Contact](#contact)
 * [Acknowledgements](#acknowledgements)
 
+**Note**
+
+The user login.register feature is not working due to browser cross-site cookie blocking. This will be fixed in about a month when the next update is released.
+
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
@@ -147,7 +151,7 @@ Please note that only `npm test` won't work as this app relies on this environme
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/tirthajyoti-ghosh/final-capstone-frontend/issues) for a list of proposed features (and known issues).
+- Implement JWT authentication instead of relying on Rails sessions.
 
 <!-- CONTRIBUTING -->
 ## Contributing
