@@ -130,10 +130,8 @@ To get a local copy up and running follow these simple steps.
 3. Start local server
 
     ```sh
-    REACT_APP_BASE_URL=http://localhost:3001 npm start
+    npm start
     ```
-
-    Please note that only `npm start` won't work as this app relies on this environment variable.
 
 4. Visit `http://localhost:3000/` in your browser.
 
@@ -143,11 +141,8 @@ To get a local copy up and running follow these simple steps.
 
 Run this command in your terminal:
 ```sh
-REACT_APP_BASE_URL=http://localhost:3001 npm test
+npm test
 ```
-
-Please note that only `npm test` won't work as this app relies on this environment variable.
-
 <!-- ROADMAP -->
 ## Roadmap
 
@@ -174,10 +169,10 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 👤 **Tirthajyoti Ghosh**
 
-- Website: [tirthajyoti](https://tirthajyoti-ghosh.github.io/Portfolio/)
+- Website: [ghosh.tech](https://ghosh.tech/)
 - GitHub - [@tirthajyoti-ghosh](https://github.com/tirthajyoti-ghosh)
 - Twitter - [@terrific_ghosh](https://twitter.com/terrific_ghosh)
-- LinkedIn - [linkedin](https://www.linkedin.com/in/tirthajyoti-ghosh/)
+- LinkedIn - [@tirthajyoti-ghosh](https://www.linkedin.com/in/tirthajyoti-ghosh/)
 
 Project Link: [https://github.com/tirthajyoti-ghosh/final-capstone-frontend](https://github.com/tirthajyoti-ghosh/final-capstone-frontend)
 
