@@ -26,14 +26,12 @@ const Registrations = ({ storeUser, updateLoggedInStatus }) => {
 
   const history = useHistory();
 
-  const redirectBack = () => {
-    history.goBack();
-  };
-
   const handleSuccessfulAuth = data => {
+    localStorage.setItem('auth', JSON.stringify({ ...data }));
+
     storeUser(data);
     updateLoggedInStatus('LOGGED_IN');
-    redirectBack();
+    history.push('/');
   };
 
   const handleChange = event => {
@@ -53,7 +51,7 @@ const Registrations = ({ storeUser, updateLoggedInStatus }) => {
 
     register(name, email, password, password_confirmation)
       .then(response => {
-        if (response.data.status === 'created') handleSuccessfulAuth(response.data);
+        if (response.data.token) handleSuccessfulAuth(response.data);
         else setUser({ ...user, errors: response.data.errors, loading: false });
       });
   };

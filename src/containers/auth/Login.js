@@ -23,14 +23,12 @@ const Login = ({ storeUser, updateLoggedInStatus }) => {
 
   const history = useHistory();
 
-  const redirectBack = () => {
-    history.goBack();
-  };
-
   const handleSuccessfulAuth = data => {
+    localStorage.setItem('auth', JSON.stringify({ ...data }));
+
     storeUser(data);
     updateLoggedInStatus('LOGGED_IN');
-    redirectBack();
+    history.push('/');
   };
 
   const handleChange = event => {
@@ -50,7 +48,7 @@ const Login = ({ storeUser, updateLoggedInStatus }) => {
 
     login(email, password)
       .then(response => {
-        if (response.data.logged_in === true) handleSuccessfulAuth(response.data);
+        if (response.data.token) handleSuccessfulAuth(response.data);
       })
       .catch(() => setUser({ ...user, errors: 'Invalid email/password. Try again.', loading: false }));
   };
