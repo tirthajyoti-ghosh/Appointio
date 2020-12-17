@@ -3,37 +3,34 @@ import { connect } from 'react-redux';
 
 import PropTypes from 'prop-types';
 
-import { STORE_USER, UPDATE_LOGIN_STATUS, REMOVE_USER } from '../constants';
-import checkLoggedInStatus from '../API/checkLoggedInStatus';
+import { STORE_AUTH, UPDATE_LOGIN_STATUS, REMOVE_AUTH } from '../constants';
 import Logout from './Logout';
 
 const Profile = ({
-  user, loggedInStatus, storeUser, removeUser, updateLoggedInStatus,
+  auth, loggedInStatus, storeAuth, removeAuth, updateLoggedInStatus,
 }) => {
   useEffect(() => {
-    checkLoggedInStatus()
-      .then(response => {
-        if (response.data.logged_in && loggedInStatus === 'NOT_LOGGED_IN') {
-          storeUser(response.data.user);
-          updateLoggedInStatus('LOGGED_IN');
-        } else if (!response.data.logged_in && loggedInStatus === 'LOGGED_IN') {
-          removeUser();
-          updateLoggedInStatus('NOT_LOGGED_IN');
-        }
-      });
-  }, [loggedInStatus]); // Does not work "on mount" because component mounts only once
+    if (localStorage.getItem('auth')) {
+      const auth = JSON.parse(localStorage.getItem('auth'));
+      storeAuth(auth);
+      updateLoggedInStatus('LOGGED_IN');
+    } else if (!localStorage.getItem('auth') && loggedInStatus === 'LOGGED_IN') {
+      removeAuth();
+      updateLoggedInStatus('NOT_LOGGED_IN');
+    }
+  }, []);
 
   return (
     <>
       {
-        user.name === undefined
+        auth.user === undefined
           ? <a className="login-btn" href="/login">Login</a>
           : (
             <section className="profile">
-              <div className="avatar">{user.name.split('')[0]}</div>
+              <div className="avatar">{auth.user.name.split('')[0]}</div>
               <div>
-                <p className="name">{user.name}</p>
-                <p className="email">{user.email}</p>
+                <p className="name">{auth.user.name}</p>
+                <p className="email">{auth.user.email}</p>
               </div>
 
               <Logout />
@@ -45,24 +42,26 @@ const Profile = ({
 };
 
 const mapStateToProps = state => ({
-  user: state.user,
+  auth: state.auth,
   loggedInStatus: state.loggedInStatus,
 });
 
 const mapDispatchToProps = dispatch => ({
-  storeUser: user => dispatch({ type: STORE_USER, user }),
-  removeUser: () => dispatch({ type: REMOVE_USER }),
+  storeAuth: auth => dispatch({ type: STORE_AUTH, auth }),
+  removeAuth: () => dispatch({ type: REMOVE_AUTH }),
   updateLoggedInStatus: status => dispatch({ type: UPDATE_LOGIN_STATUS, status }),
 });
 
 Profile.propTypes = {
-  storeUser: PropTypes.func.isRequired,
-  removeUser: PropTypes.func.isRequired,
+  storeAuth: PropTypes.func.isRequired,
+  removeAuth: PropTypes.func.isRequired,
   updateLoggedInStatus: PropTypes.func.isRequired,
 
-  user: PropTypes.shape({
-    name: PropTypes.string,
-    email: PropTypes.string,
+  auth: PropTypes.shape({
+    user: PropTypes.shape({
+      name: PropTypes.string,
+      email: PropTypes.string,
+    }),
   }).isRequired,
 
   loggedInStatus: PropTypes.string.isRequired,

@@ -3,16 +3,13 @@ import { connect } from 'react-redux';
 
 import PropTypes from 'prop-types';
 
-import { REMOVE_USER, UPDATE_LOGIN_STATUS } from '../constants';
-import logout from '../API/logout';
+import { REMOVE_AUTH, UPDATE_LOGIN_STATUS } from '../constants';
 
-const Logout = ({ removeUser, updateLoggedInStatus }) => {
+const Logout = ({ removeAuth, updateLoggedInStatus }) => {
   const handleLogout = () => {
-    logout()
-      .then(() => {
-        removeUser();
-        updateLoggedInStatus('NOT_LOGGED_IN');
-      });
+    localStorage.setItem('auth', '');
+    removeAuth();
+    updateLoggedInStatus('NOT_LOGGED_IN');
   };
   return (
     <button type="button" onClick={handleLogout} className="logout-btn">
@@ -25,12 +22,12 @@ const Logout = ({ removeUser, updateLoggedInStatus }) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  removeUser: () => dispatch({ type: REMOVE_USER }),
+  removeAuth: () => dispatch({ type: REMOVE_AUTH }),
   updateLoggedInStatus: status => dispatch({ type: UPDATE_LOGIN_STATUS, status }),
 });
 
 Logout.propTypes = {
-  removeUser: PropTypes.func.isRequired,
+  removeAuth: PropTypes.func.isRequired,
   updateLoggedInStatus: PropTypes.func.isRequired,
 };
 
