@@ -6,7 +6,7 @@ import apartmentDetails from './apartmentDetails';
 import types from './types';
 import appointments from './appointments';
 import loggedInStatus from './loggedInStatus';
-import user from './user';
+import auth from './auth';
 
 export default combineReducers({
   apartments,
@@ -15,5 +15,5 @@ export default combineReducers({
   apartmentDetails,
   appointments,
   loggedInStatus,
-  user,
+  auth,
 });

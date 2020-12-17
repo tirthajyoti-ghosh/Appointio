@@ -21,7 +21,7 @@ const initialState = {
   types: [],
   appointments: [],
   loggedInStatus: 'NOT_LOGGED_IN',
-  user: {},
+  auth: {},
 };
 
 const store = createStore(reducer, initialState, composeWithDevTools(applyMiddleware(thunk)));

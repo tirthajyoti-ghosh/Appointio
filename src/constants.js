@@ -4,8 +4,8 @@ export const ADD_APARTMENT_DETAILS = 'ADD_APARTMENT_DETAILS';
 export const ADD_TYPES = 'ADD_TYPES';
 export const ADD_APPOINTMENTS = 'ADD_APPOINTMENTS';
 export const DELETE_APPOINTMENTS = 'DELETE_APPOINTMENTS';
-export const STORE_USER = 'STORE_USER';
-export const REMOVE_USER = 'REMOVE_USER';
+export const STORE_AUTH = 'STORE_AUTH';
+export const REMOVE_AUTH = 'REMOVE_AUTH';
 export const UPDATE_LOGIN_STATUS = 'UPDATE_LOGIN_STATUS';
 
 export const { REACT_APP_BASE_URL } = process.env;
