@@ -5,9 +5,11 @@ import PropTypes from 'prop-types';
 
 import deleteAppointmentAction from '../store/middlewares/deleteAppointment';
 
-const DeleteAppointment = ({ appointmentId, appointments, deleteAppointment }) => {
+const DeleteAppointment = ({
+  appointmentId, appointments, deleteAppointment, token,
+}) => {
   const handleClick = () => {
-    deleteAppointment(appointmentId, appointments);
+    deleteAppointment(appointmentId, appointments, token);
   };
 
   return (
@@ -17,17 +19,21 @@ const DeleteAppointment = ({ appointmentId, appointments, deleteAppointment }) =
 
 const mapStateToProps = state => ({
   appointments: state.appointments,
+  token: state.auth.token,
 });
 
 const mapDispatchToProps = dispatch => ({
   deleteAppointment:
-    (appointmentId, appointments) => dispatch(deleteAppointmentAction(appointmentId, appointments)),
+    (appointmentId, appointments, token) => {
+      dispatch(deleteAppointmentAction(appointmentId, appointments, token));
+    },
 });
 
 DeleteAppointment.propTypes = {
   appointmentId: PropTypes.number.isRequired,
   appointments: PropTypes.arrayOf(PropTypes.object).isRequired,
   deleteAppointment: PropTypes.func.isRequired,
+  token: PropTypes.string.isRequired,
 };
 
 export default connect(

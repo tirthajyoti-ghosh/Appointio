@@ -10,7 +10,7 @@ import MakeAppointment from './MakeAppointment';
 import ApartmentImageGallery from '../components/ApartmentImageGallery';
 
 const ApartmentDetails = ({
-  apartmentDetails, apartmentDetailsAdder, match, loggedInStatus,
+  apartmentDetails, apartmentDetailsAdder, match, loggedInStatus, token,
 }) => {
   const { apartmentId } = match.params;
 
@@ -83,7 +83,7 @@ const ApartmentDetails = ({
               {
                 loggedInStatus === 'NOT_LOGGED_IN'
                   ? <p>You need to login to make an appointment</p>
-                  : <MakeAppointment apartmentId={apartmentId} />
+                  : <MakeAppointment apartmentId={apartmentId} token={token} />
               }
             </section>
           </article>
@@ -96,6 +96,7 @@ const ApartmentDetails = ({
 const mapStateToProps = state => ({
   apartmentDetails: state.apartmentDetails,
   loggedInStatus: state.loggedInStatus,
+  token: state.auth.token,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -106,6 +107,7 @@ const mapDispatchToProps = dispatch => ({
 ApartmentDetails.propTypes = {
   apartmentDetailsAdder: PropTypes.func.isRequired,
   loggedInStatus: PropTypes.string.isRequired,
+  token: PropTypes.string.isRequired,
 
   apartmentDetails: PropTypes.shape({
     id: PropTypes.number,

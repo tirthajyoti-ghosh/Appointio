@@ -7,10 +7,10 @@ import getAllAppointments from '../API/getAllAppointments';
 import { ADD_APPOINTMENTS } from '../constants';
 import DeleteAppointment from './DeleteAppointment';
 
-const Appointments = ({ appointments, appointmentsAdder }) => {
+const Appointments = ({ appointments, appointmentsAdder, token }) => {
   useEffect(() => {
-    getAllAppointments().then(appointments => appointmentsAdder(appointments));
-  }, []);
+    getAllAppointments(token).then(appointments => appointmentsAdder(appointments));
+  }, [token]);
 
   return (
     <div>
@@ -49,6 +49,7 @@ const Appointments = ({ appointments, appointmentsAdder }) => {
 const mapStateToProps = state => ({
   appointments: state.appointments,
   loggedInStatus: state.loggedInStatus,
+  token: state.auth.token,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -64,6 +65,8 @@ Appointments.propTypes = {
     apartment_address: PropTypes.string,
     date: PropTypes.string,
   })).isRequired,
+
+  token: PropTypes.string.isRequired,
 };
 
 export default connect(

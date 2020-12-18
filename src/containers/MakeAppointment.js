@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 
 import createAppointment from '../API/createAppointment';
 
-const MakeAppointment = ({ apartmentId }) => {
+const MakeAppointment = ({ apartmentId, token }) => {
   const [message, setMessage] = useState('');
 
   const handleAppointmentSubmit = event => {
     event.preventDefault();
 
-    createAppointment(event.target.children[0].value, apartmentId)
+    createAppointment(event.target.children[0].value, apartmentId, token)
       .then(message => setMessage(message));
   };
 
@@ -27,6 +27,7 @@ const MakeAppointment = ({ apartmentId }) => {
 
 MakeAppointment.propTypes = {
   apartmentId: PropTypes.string.isRequired,
+  token: PropTypes.string.isRequired,
 };
 
 export default MakeAppointment;
