@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import PropTypes from 'prop-types';
@@ -13,10 +14,10 @@ const Types = ({ types, typesAdder }) => {
 
   return (
     <section className="types-list">
-      <a href="/">ALL</a>
+      <NavLink exact to="/" activeClassName="active">ALL</NavLink>
       {
         types.map(type => (
-          <a href={`/types/${type.id}/${type.name}`} key={type.id}>{type.name}</a>
+          <NavLink exact to={`/types/${type.id}/${type.name}`} activeClassName="active" key={type.id}>{type.name}</NavLink>
         ))
       }
     </section>

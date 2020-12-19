@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import PropTypes from 'prop-types';
@@ -15,7 +16,7 @@ const SideNav = ({ loggedInStatus }) => (
     {
       loggedInStatus === 'NOT_LOGGED_IN'
         ? ''
-        : <a href="/appointments" className="appointments">Appointments</a>
+        : <NavLink exact to="/appointments" className="appointments" activeClassName="active">Appointments</NavLink>
     }
 
     <Profile />
