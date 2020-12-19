@@ -69,7 +69,13 @@
 ## About The Project
 
 ![image](https://user-images.githubusercontent.com/57726348/102690750-970b6500-422d-11eb-94c8-4d84254ac101.png)
+
+<hr>
+
 ![image](https://user-images.githubusercontent.com/57726348/102690797-f7020b80-422d-11eb-9d42-e2ac99d388af.png)
+
+<hr>
+
 ![image](https://user-images.githubusercontent.com/57726348/102690838-3e889780-422e-11eb-98b8-e9f94bc27e4a.png)
 
 This is a Single-Page **tablet** web app built with React/Redux (front-end) and Rails (back-end). The topic of this app is to book an appointment to schedule a tour of an apartment before you rent. You will have a list of apartments based on type to browse through. You can visit the apartment details page to know more and book an appointment. User authentication is handled using JWT authentication.
