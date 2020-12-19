@@ -29,7 +29,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/tirthajyoti-ghosh/final-capstone-frontend">
+  <a href="https://github.com/tirthajyoti-ghosh/Appointio">
     <img src="https://user-images.githubusercontent.com/57726348/95655344-3ae8de00-0b24-11eb-9c34-1fac11fecfcc.png" alt="Logo" width="195" height="115">
   </a>
 
@@ -43,9 +43,9 @@
     <br />
     <a href="https://adoring-pike-d04b95.netlify.app/">View Demo</a>
     ·
-    <a href="https://github.com/tirthajyoti-ghosh/final-capstone-frontend/issues">Report Bug</a>
+    <a href="https://github.com/tirthajyoti-ghosh/Appointio/issues">Report Bug</a>
     ·
-    <a href="https://github.com/tirthajyoti-ghosh/final-capstone-frontend/issues">Request Feature</a>
+    <a href="https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign">Site Design</a>
   </p>
 </p>
 
@@ -65,43 +65,36 @@
 * [Contact](#contact)
 * [Acknowledgements](#acknowledgements)
 
-**Note**
-
-The user login/register feature is not working due to browser cross-site cookie blocking. This will be fixed in about a month when the next update is released.
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![image](https://user-images.githubusercontent.com/57726348/95876233-7851a380-0d90-11eb-94d4-09e22587110e.png)
-![image](https://user-images.githubusercontent.com/57726348/95876496-bf3f9900-0d90-11eb-97ef-443fb3b06dfb.png)
-![image](https://user-images.githubusercontent.com/57726348/95876671-edbd7400-0d90-11eb-8b7c-85d23b71729a.png)
+![image](https://user-images.githubusercontent.com/57726348/102690750-970b6500-422d-11eb-94c8-4d84254ac101.png)
+![image](https://user-images.githubusercontent.com/57726348/102690797-f7020b80-422d-11eb-9d42-e2ac99d388af.png)
+![image](https://user-images.githubusercontent.com/57726348/102690838-3e889780-422e-11eb-98b8-e9f94bc27e4a.png)
 
-This is a Single-Page **tablet** web app built with React/Redux (front-end) and Rails (back-end). The topic of this app is to book an appointment to schedule a tour of an apartment before you rent. You will have a list of apartments based on type to browse through. You can visit the apartment details page to know more and book an appointment.
+This is a Single-Page **tablet** web app built with React/Redux (front-end) and Rails (back-end). The topic of this app is to book an appointment to schedule a tour of an apartment before you rent. You will have a list of apartments based on type to browse through. You can visit the apartment details page to know more and book an appointment. User authentication is handled using JWT authentication.
 
 ### Built With
 
-- React
-- Redux
-- ESLint
-- Stylelint
-- SASS
-- Styled components
-- npm
-- Rails REST API
-- React-image-gallery
-- Prop-types
-- [Netlify](https://adoring-pike-d04b95.netlify.app/)
+* React
+* Redux
+* ESLint
+* Stylelint
+* SASS
+* npm
+* Rails REST API
+* React-image-gallery
+* Prop-types
+* [Netlify](https://adoring-pike-d04b95.netlify.app/)
 
 ## Live demo
-
-**IMPORTANT!** You have to enable third-party cookies in your browser otherwise you won't be able to login.
 
 Deployed to Netlify - [live demo](https://adoring-pike-d04b95.netlify.app/).
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-You need the back-end server for this app to work. You can find the intructions to setup back-end server locally [here](https://github.com/tirthajyoti-ghosh/final-capstone-backend).
+**IMPORTANT!** You need the back-end server for the tests to work. You can find the intructions to setup back-end server locally [here](https://github.com/tirthajyoti-ghosh/final-capstone-backend).
 
 To get a local copy up and running follow these simple steps.
 
@@ -118,7 +111,7 @@ To get a local copy up and running follow these simple steps.
 1. Clone the repo
 
     ```sh
-    git clone https://github.com/tirthajyoti-ghosh/final-capstone-frontend.git
+    git clone https://github.com/tirthajyoti-ghosh/Appointio.git
     ```
 
 2. Install NPM packages
@@ -140,13 +133,14 @@ To get a local copy up and running follow these simple steps.
 **IMPORTANT!** You need the back-end server for the tests to work. You can find the intructions to setup back-end server locally [here](https://github.com/tirthajyoti-ghosh/final-capstone-backend).
 
 Run this command in your terminal:
+
 ```sh
 npm test
 ```
 <!-- ROADMAP -->
 ## Roadmap
 
-- Implement JWT authentication instead of relying on Rails sessions.
+* Add Mapbox-gl to display apartments in an interactive map.
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -174,7 +168,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 - Twitter - [@terrific_ghosh](https://twitter.com/terrific_ghosh)
 - LinkedIn - [@tirthajyoti-ghosh](https://www.linkedin.com/in/tirthajyoti-ghosh/)
 
-Project Link: [https://github.com/tirthajyoti-ghosh/final-capstone-frontend](https://github.com/tirthajyoti-ghosh/final-capstone-frontend)
+Project Link: [https://github.com/tirthajyoti-ghosh/Appointio](https://github.com/tirthajyoti-ghosh/Appointio)
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
@@ -186,14 +180,14 @@ Project Link: [https://github.com/tirthajyoti-ghosh/final-capstone-frontend](htt
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/tirthajyoti-ghosh/final-capstone-frontend.svg?style=flat-square
-[contributors-url]: https://github.com/tirthajyoti-ghosh/final-capstone-frontend/graphs/contributors
+[contributors-url]: https://github.com/tirthajyoti-ghosh/Appointio/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/tirthajyoti-ghosh/final-capstone-frontend.svg?style=flat-square
-[forks-url]: https://github.com/tirthajyoti-ghosh/final-capstone-frontend/network/members
+[forks-url]: https://github.com/tirthajyoti-ghosh/Appointio/network/members
 [stars-shield]: https://img.shields.io/github/stars/tirthajyoti-ghosh/final-capstone-frontend.svg?style=flat-square
-[stars-url]: https://github.com/tirthajyoti-ghosh/final-capstone-frontend/stargazers
+[stars-url]: https://github.com/tirthajyoti-ghosh/Appointio/stargazers
 [issues-shield]: https://img.shields.io/github/issues/tirthajyoti-ghosh/final-capstone-frontend.svg?style=flat-square
-[issues-url]: https://github.com/tirthajyoti-ghosh/final-capstone-frontend/issues
+[issues-url]: https://github.com/tirthajyoti-ghosh/Appointio/issues
 [license-shield]: https://img.shields.io/badge/License-MIT-yellow.svg
-[license-url]: https://github.com/tirthajyoti-ghosh/final-capstone-frontend/blob/development/LICENSE
+[license-url]: https://github.com/tirthajyoti-ghosh/Appointio/blob/development/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/tirthajyoti-ghosh/
