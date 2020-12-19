@@ -36,9 +36,9 @@
   <h3 align="center">Appointio (front-end)</h3>
 
   <p align="center">
-    Browse apartments and schedule a tour before you rent. Built with React/Redux and <a href="https://github.com/tirthajyoti-ghosh/Appointio-back-end">Rails back-end</a>.
+    Browse apartments and schedule a tour before you rent. Built with React/Redux and Rails back-end.
     <br />
-    <a href="https://github.com/tirthajyoti-ghosh/final-capstone-frontend"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/tirthajyoti-ghosh/Appointio-back-end"><strong>Explore the back-end »</strong></a>
     <br />
     <br />
     <a href="https://adoring-pike-d04b95.netlify.app/">View Demo</a>
